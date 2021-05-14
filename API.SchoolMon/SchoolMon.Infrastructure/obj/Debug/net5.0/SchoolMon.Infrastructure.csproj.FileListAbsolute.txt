@@ -1,0 +1,15 @@
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\bin\Debug\net5.0\SchoolMon.Application.dll
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\obj\Debug\net5.0\SchoolMon.Infrastructure.csprojAssemblyReference.cache
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\obj\Debug\net5.0\SchoolMon.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\obj\Debug\net5.0\SchoolMon.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\obj\Debug\net5.0\SchoolMon.Infrastructure.AssemblyInfo.cs
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\bin\Debug\net5.0\SchoolMon.Infrastructure.deps.json
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\bin\Debug\net5.0\SchoolMon.Infrastructure.dll
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\bin\Debug\net5.0\ref\SchoolMon.Infrastructure.dll
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\bin\Debug\net5.0\SchoolMon.Infrastructure.pdb
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\bin\Debug\net5.0\SchoolMon.Application.pdb
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\obj\Debug\net5.0\SchoolMon.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\obj\Debug\net5.0\SchoolMon.Infrastructure.csproj.CopyComplete
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\obj\Debug\net5.0\SchoolMon.Infrastructure.dll
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\obj\Debug\net5.0\ref\SchoolMon.Infrastructure.dll
+C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Infrastructure\obj\Debug\net5.0\SchoolMon.Infrastructure.pdb
