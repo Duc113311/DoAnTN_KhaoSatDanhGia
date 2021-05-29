@@ -1,0 +1,48 @@
+.m-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 221px);
+    height: 60px;
+    border-bottom: 1px solid #bbbbbb;
+    justify-content: space-between
+}
+
+.header-left {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 13px;
+}
+
+.header-right {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    right: 0;
+    padding-right: 4px;
+}
+
+.header-left label {
+    font-size: 16px;
+}
+
+.title-school {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 16px;
+}
+
+.h-title {
+    padding-right: 6px;
+}
+
+.title-year select.title-year-m {
+    width: 112px;
+    padding: 7px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    outline: none;
+}

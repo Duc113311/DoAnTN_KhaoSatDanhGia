@@ -1,0 +1,126 @@
+.m-model {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    display: inline-block;
+}
+
+.back-dialog {
+    background: black;
+    opacity: 0.4;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.showDetail {
+    display: none;
+}
+
+.revenue-dialog {
+    height: 400px;
+    width: 800px;
+    left: calc(50% - 400px);
+    position: absolute;
+    border: 1px solid #d1f1ff;
+    background: white;
+    top: calc(50% - 200px);
+    z-index: 3;
+    border-radius: 3px;
+}
+
+.title-form {
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+}
+
+.content-form {
+    width: 100%;
+    height: 273px;
+    padding-top: 18px;
+    display: flex;
+}
+
+.footer-form {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    justify-content: flex-end;
+}
+
+.title-form-revenue {
+    float: left;
+    margin-left: 15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    padding-top: 8px;
+}
+
+.btn-x {
+    float: right;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-close {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../assets/img/ic_close_16.png)
+}
+
+.btn-footer-right {
+    float: right;
+    height: 100%;
+    display: initial;
+    align-items: center;
+    width: 37%;
+    padding-top: 18px;
+    padding-right: 10px;
+}
+
+.btn-footer-left {
+    float: left;
+    height: 100%;
+    width: 62%;
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+}
+
+
+/* right */
+
+.content-right-input {
+    width: 50%;
+    float: right;
+    padding-left: 20px;
+    padding-right: 24px;
+}
+
+.title-check {
+    display: inline-block;
+    position: relative;
+    padding-left: 2px;
+    margin-bottom: 26px;
+    cursor: pointer;
+    font-size: 13px;
+    width: 40%;
+    user-select: none;
+}

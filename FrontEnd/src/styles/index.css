@@ -1,0 +1,27 @@
+@import "./basics/button.css";
+@import "./basics/input.css";
+@import "./basics/logoIcon.css";
+@import "./basics/pagading.css";
+@import "./basics/radio.css";
+@import "./basics/table.css";
+@import "./layout/content.css";
+@import "./layout/header.css";
+@import "./layout/navbar.css";
+@import "./page/dialgoDetail.css";
+@import "./basics/dialogDelete.css";
+body {
+    font-family: OpenSans-Regular;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: OpenSans-Regular;
+    src: url('../assets/font/OpenSans-Regular.ttf');
+}
+
+a.nav-item {
+    text-decoration: none;
+    color: #fff;
+}

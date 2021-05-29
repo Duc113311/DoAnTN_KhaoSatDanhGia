@@ -1,0 +1,103 @@
+.form-table {
+    display: flex;
+    /* overflow: auto; */
+    width: 97%;
+    height: calc(100vh - 212px);
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
+.input-search {
+    display: flex;
+    width: auto;
+}
+
+.form-table table th {
+    align-items: center;
+}
+
+.tb-data {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    border: 1px solid #d9d9d9;
+}
+
+th.text-center {
+    min-width: 75px;
+    align-items: center;
+}
+
+.form-table table th {
+    border: 1px solid #c1c1c1;
+    padding: 5px;
+    padding-top: 10px;
+    background: #EAEBEC;
+}
+
+.form-table table th .input-search {
+    padding-top: 14px;
+}
+
+.form-table table th .input-search select {
+    border: 1px solid #b1b1b1;
+    padding-left: 28px;
+    width: 100%;
+    height: 32px;
+    outline: none;
+}
+
+.form-table table th .input-search input:focus {
+    border-color: #ccc;
+}
+
+.form-table table th .input-search input {
+    border: 1px solid #b1b1b1;
+    padding-left: 28px;
+    width: 100%;
+    height: 28px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../../assets/icon/ic_Filter.svg);
+    outline: none;
+}
+
+.form-table table tr td {
+    border: 1px solid #ccc;
+    padding: 0 8px;
+}
+
+.btn-function {
+    display: flex;
+}
+
+.m-dialog {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+}
+
+thead th:first-child {
+    left: 0;
+    z-index: 2;
+}
+
+
+/* 
+::-webkit-scrollbar {
+    width: 5px;
+    height: 4px;
+    background-color: #FFEBEB;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #019160;
+} */
+
+thead th {
+    position: sticky;
+    top: 0;
+}

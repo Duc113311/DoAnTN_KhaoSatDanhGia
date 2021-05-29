@@ -1,0 +1,87 @@
+.m-nvabar {
+    position: relative;
+    float: left;
+    width: 220px;
+    height: 100vh;
+    background-color: #0973B9;
+    border-right: 1px solid #bbbbbb;
+}
+
+.logo-site {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    box-shadow: 0 1px 4px -1px;
+}
+
+.navbar-content {
+    width: 100%;
+}
+
+.logo-box {
+    display: flex;
+    position: absolute;
+    width: 70%;
+    left: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.misa-logo {
+    font-size: 18px;
+    margin-left: 10px;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.bt-category {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    width: 30%;
+    height: 60px;
+    right: -20px;
+}
+
+.navbar-content {
+    width: 100%;
+    margin-top: 7px;
+}
+
+.navbar-content .nav-item {
+    display: flex;
+    padding-left: 2px;
+    height: 45px;
+    cursor: pointer;
+    line-height: 44px;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.navbar-content .nav-item-icon {
+    width: 44px;
+    height: 30px;
+    align-self: center;
+    margin-right: 2px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.navbar-content .nav-item:hover {
+    background-color: #EB7728;
+    border-left: 3px solid #03C573;
+}
+
+.navbar-content a.nav-item:focus {
+    background-color: #EB7728;
+}
+
+.title-logo {
+    font-size: 21px;
+    font-family: sans-serif;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
