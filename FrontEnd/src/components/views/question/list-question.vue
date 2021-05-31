@@ -126,7 +126,10 @@
     </div>   
      
     </div>
-    <DetailQuestion @btCreate="btCreate" :showDetail="showDetail"/>
+    <DetailQuestion 
+        @btCreate="btCreate" 
+        @close="btClose"
+        :showDetail="showDetail"/>
   </div>
 </template>
 
@@ -145,9 +148,10 @@ export default {
     methods:{
 
         btCreate(){
-            
-            var me=this;
-            me.showDetail=false
+            this.showDetail=false
+        },
+        btClose(value){
+            this.showDetail=value
         }
     }
 }

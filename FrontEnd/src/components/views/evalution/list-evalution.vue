@@ -22,9 +22,9 @@
             </div>
             <div class="header-right-bt">
                 <button id="btn" class="btn-add" >Thêm mới</button>
-                <button id="btn" class="btn-view" >Xem</button>
-                <button id="btn" class="btn-in" >In phiếu</button>
-                <button id="btn" class="btn-commit" >Đánh giá</button>
+                <button id="btn" class="btn-add" @click="btViewEvalution()">Xem</button>
+                <button id="btn" class="btn-add">In phiếu</button>
+                <button id="btn" class="btn-add" >Đánh giá</button>
             </div>
         </div>
         <div class="form-table">
@@ -178,13 +178,35 @@
     </div>   
      
     </div>
-  
+  <DetailEvalution 
+    @btViewEvalution="btViewEvalution"
+     @close="btclose"
+     :isShowEvalution="isShowEvalution"/>
   </div>
 </template>
 
 <script>
+import DetailEvalution from "../evalution/detail-evalution.vue"
 export default {
-    name:'ListEvalution'
+    name:'ListEvalution',
+    components:{
+        DetailEvalution
+    },
+    data(){
+        
+        return{
+            isShowEvalution:true
+        }
+    },
+    methods:{
+        btViewEvalution(){
+            var me=this;
+            me.isShowEvalution=false
+        },
+        btclose(value){
+            this.isShowEvalution=value
+        }
+    }
 }
 </script>
 

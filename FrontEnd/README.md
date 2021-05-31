@@ -1,4 +1,4 @@
-# forntend-misa
+# forntend-school
 
 ## Project setup
 ```

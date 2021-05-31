@@ -108,8 +108,7 @@ export default {
   },
   methods:{
     btClose(){
-      var me=this
-      me.showDetail=true
+      this.$emit("close",true)
     }
   }
 }
