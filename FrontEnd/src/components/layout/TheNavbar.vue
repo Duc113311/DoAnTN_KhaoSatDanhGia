@@ -26,6 +26,10 @@
                 <div class="nav-item-icon nav-revenue"></div>
                 <div class="nav-item-text">Quản lý phiếu đánh giá</div>
             </router-link>
+            <router-link to="/baocao" class="nav-item">
+                <div class="nav-item-icon nav-revenue"></div>
+                <div class="nav-item-text">Quản lý phiếu tạo</div>
+            </router-link>
             <router-link to="/lophoc" class="nav-item">
                 <div class="nav-item-icon nav-bill"></div>
                 <div class="nav-item-text">Quản lý lớp học</div>
@@ -34,10 +38,6 @@
                 <div class="nav-item-icon nav-num-revenue"></div>
                 <div class="nav-item-text">Quản lý trẻ</div>
               </router-link>
-             <router-link to="/baocao" class="nav-item">
-                <div class="nav-item-icon nav-repost"></div>
-                <div class="nav-item-text">Báo cáo</div>
-             </router-link>
              <router-link to="/taikhoan" class="nav-item">
                 <div class="nav-item-icon nav-message"></div>
                 <div class="nav-item-text">Quản lý tài khoản</div>

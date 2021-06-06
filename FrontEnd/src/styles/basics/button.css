@@ -154,3 +154,13 @@ input:checked+.slider:before {
     border-radius: 3px;
     padding: 5px 6px;
 }
+
+.addEvalution{
+    width: 30px;
+    height: 30px;
+    align-self: center;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../assets/icon/ic_Plus.svg)
+}

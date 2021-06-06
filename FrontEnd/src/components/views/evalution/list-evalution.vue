@@ -82,6 +82,12 @@
                                         <input type="text" />
                                     </div>
                                 </th>
+                                  <th style="min-width: 230px;white-space: nowrap;">
+                                    <label for="">Loại phiếu</label>
+                                    <div class="input-search">
+                                        <input type="text" />
+                                    </div>
+                                </th>
                                 <th style="min-width: 150px;
                                 white-space: nowrap;">
                                     <label for="">Tên trẻ</label>
@@ -137,6 +143,9 @@
                                 </td>
                                  <td class="text-center">
                                     23/02/2021
+                                </td>
+                                 <td class="text-center">
+                                    
                                 </td>
                                  <td class="text-center">
                                     
