@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="navbar-content">
-             <router-link to="/" class="nav-item">
+             <router-link to="/danhmuc" class="nav-item">
                 <div class="nav-item-icon nav-dashboad"></div>
                 <div class="nav-item-text">Tổng quan</div>
              </router-link>

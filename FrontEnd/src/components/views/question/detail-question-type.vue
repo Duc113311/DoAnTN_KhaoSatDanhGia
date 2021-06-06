@@ -1,20 +1,20 @@
 <template>
   <div class="detailQuestion">
-     <div class="m-model" :class="{ showDetail: showDetail }">
+     <div class="m-model" :class="{ ishowDetailType: ishowDetailType }">
         <div class="back-dialog"></div>
-        <div class="revenue-dialog dialog">
+        <div class="revenue-dialog1 dialog">
           <div class="title-form">
-                <label class="title-form-revenue"> <b>Thêm thông tin câu hỏi</b></label>
+                <label class="title-form-revenue"> <b>Thêm loại câu hỏi</b></label>
         
                 <div class="btn-x">
                   <button class="btn-close" @click=btClose()></button>
                 </div>
           </div>
-        <div class="content-form">
+        <div class="content-form1">
                   <div class="content-left-input">
                             <!-- Tên câu hỏi -->
                             <div class="form-group">
-                              <label class="input-name" for="">Tên câu hỏi <b style="color: #d40505;">*</b></label>
+                              <label class="input-name" for="">Tên loại câu hỏi <b style="color: #d40505;">*</b></label>
                               <input
                                 type="text"
                                 class="form-control" 
@@ -23,23 +23,12 @@
                             </div>
                             <div id="feeName_warning" class="validate-warning">
                               Không được để trống
-                            </div>
-                            <!-- Nhóm câu hỏi -->
-                            <div class="form-group">
-                            <label for="" class="input-name">Thuộc nhóm câu hỏi </label>
-                            <div class="group-form">
-                              <select name="" id="" tabindex="2" required ref="feeGroupID" class="form-control" >
-                                <option value="">Lựa chọn nhóm</option>
-                                <option></option>
-                                 </select>
-                              <div class="btn-sum" @click="btTypeQuestion"></div>
-                             </div>
-                            </div>
+                            </div>  
                             <!-- Mô tả -->
                             <div class="form-group">
                               <label class="input-name" for="">Mô tả <b style="color: #d40505;">*</b></label>
                               <textarea
-                              style="height: 90px;"
+                              style="height: 50px;"
                                 type="text"
                                 class="form-control" 
                                 tabindex="1"
@@ -48,6 +37,7 @@
                             <div id="feeName_warning" class="validate-warning">
                               Không được để trống
                             </div>
+                           
                   </div>     
           </div>
           <div class="footer-form">
@@ -61,40 +51,40 @@
 
 
   </div>
-  <DetailQuestionType 
-      :ishowDetailType="ishowDetailType"
-      @btCloseType="btCloseType"/>
   </div>
 </template>
 
 <script>
-import DetailQuestionType from "../question/detail-question-type.vue"
 export default {
-  name:'DetailQuestion',
-  components:{DetailQuestionType},
-
-  props:["showDetail"],
-
-  data(){
-    return{
-      ishowDetailType:true
+    props:['ishowDetailType'],
+    methods:{
+        btClose(){
+            this.$emit('btCloseType',true)
+        }
     }
-  },
-  methods:{
-    btClose(){
-      this.$emit("close",true)
-    },
-    btCloseType(value){
-            this.ishowDetailType=value
-        },
 
-    btTypeQuestion(){
-      this.ishowDetailType=false
-    }
-  }
 }
 </script>
 
 <style>
-
+.ishowDetailType{
+    display: none;
+}
+.revenue-dialog1 {
+    height: 300px;
+    width: 450px;
+    left: calc(50% - 220px);
+    position: absolute;
+    border: 1px solid #d1f1ff;
+    background: white;
+    top: calc(50% - 150px);
+    z-index: 3;
+    border-radius: 3px;
+}
+.content-form1 {
+    width: 100%;
+    height: 172px;
+    padding-top: 18px;
+    display: flex;
+}
 </style>

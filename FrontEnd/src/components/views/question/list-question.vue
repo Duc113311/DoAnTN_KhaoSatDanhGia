@@ -22,7 +22,7 @@
             </div>
             <div class="header-right-bt">
                 <button id="btn-Add" class="btn-add" @click="btCreate()">Thêm mới</button>
-                <button class="btn-delete" ></button>
+                <button class="btn-delete" @click="btRemove()"></button>
             </div>
         </div>
         <div class="form-table">
@@ -32,8 +32,10 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <div class="checkbox">
-                                    </div>
+                                    <input type="checkbox" name="" id="">
+                                </th>
+                                <th>
+                                    <label for="">STT</label>
                                 </th>
                                 <th style="min-width: 250px;white-space: nowrap;">
                                     <label for="">Tên câu hỏi</label>
@@ -41,7 +43,13 @@
                                         <input type="text" />
                                     </div>
                                 </th>
-                                <th style="min-width: 310px;
+                                 <th style="min-width: 250px;white-space: nowrap;">
+                                    <label for="">Nhóm câu hỏi</label>
+                                    <div class="input-search">
+                                        <input type="text" />
+                                    </div>
+                                </th>
+                                <th style="min-width: 210px;
                                 white-space: nowrap;">
                                     <label for="">Mô tả</label>
                                     <div class="input-search">
@@ -49,26 +57,13 @@
                                         <input type="text"/>
                                     </div>
                                 </th>
+                                <th class="text-center">
+                                    <label for="">Ngày tạo</label>
+                                </th>
+                                <th class="text-center">
+                                    <label for="">Trạng thái</label>
+                                </th>
                                 
-
-                                <th class="text-center">
-                                    <label for="">Hài lòng</label>
-                                </th>
-                                <th class="text-center">
-                                    <label for="">Rất hài lòng</label>
-                                </th>
-                                <th class="text-center">
-                                    <label for="">Không hài lòng</label>
-                                </th>
-                                <th class="text-center">
-                                    <label for="">Rất không hài lòng</label>
-                                </th>
-                                <th class="text-center">
-                                    <label for="">Khoản thu bắt buộc</label>
-                                </th>
-                                <th class="text-center">
-                                    <label for="">Bình thường</label>
-                                </th>
                                 <th class="text-center">
 
                                 </th>
@@ -83,16 +78,10 @@
                                 <td class="text-center">
                                     
                                 </td>
+                                 <td class="text-center">
+                                    
+                                </td>
                                 <td class="text-center">
-                                    
-                                </td>
-                                 <td class="text-center">
-                                    
-                                </td>
-                                 <td class="text-center">
-                                    
-                                </td>
-                                 <td class="text-center">
                                     
                                 </td>
                                  <td class="text-center">
@@ -130,23 +119,30 @@
         @btCreate="btCreate" 
         @close="btClose"
         :showDetail="showDetail"/>
+        <Remove @btRemove="btRemove" :showremove="showremove"/>
   </div>
 </template>
 
 <script>
 import DetailQuestion from "../question/detail-question.vue"
+import Remove from "../../base/baseRemove.vue"
 export default {
     name:'ListQuestion',
     components:{
-        DetailQuestion
+        DetailQuestion,
+        Remove
     },
     data(){
         return{
-            showDetail:true
+            showDetail:true,
+            showremove:true
         }
     },
     methods:{
-
+        
+        btRemove(value){
+            this.showremove=value
+        },
         btCreate(){
             this.showDetail=false
         },

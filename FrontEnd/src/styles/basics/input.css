@@ -1,6 +1,5 @@
     .content-left-input {
-        width: 50%;
-        border-right: 1px solid #ccc;
+        width: 100%;
         float: left;
         padding-left: 20px;
         padding-right: 24px;
@@ -54,14 +53,15 @@
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
-        background-image: url(../../assets/icon/ic_Plus.svg)
+        background-image: url(../../assets/icon/ic_Plus.svg);
+        padding-left: 18px;
     }
     
     .group-form {
         display: flex;
         border: 1px solid #ccc;
         margin: 2px;
-        width: 100%;
+        width: 99%;
     }
     
     .form-group label.input-salary {

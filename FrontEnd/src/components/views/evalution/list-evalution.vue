@@ -21,7 +21,7 @@
                 
             </div>
             <div class="header-right-bt">
-                <button id="btn" class="btn-add" >Thêm mới</button>
+                
                 <button id="btn" class="btn-add" @click="btViewEvalution()">Xem</button>
                 <button id="btn" class="btn-add">In phiếu</button>
                 <button id="btn" class="btn-add" >Đánh giá</button>
@@ -29,8 +29,12 @@
         </div>
         <div class="form-table">
             <div class="gread" >
-                 <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Toàn trường</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                            <div id="subPages" class="collapse ">
+                <div class="allschool">
+                     <a href="#subPages" data-toggle="collapse" class="collapsed">
+                     <span>Toàn trường</span> 
+                    </a>
+                </div>
+                <div id="subPages" class="allschool">
                                 <ul class="nav">
                                     <li>
                                         <a href="#" class="">Lớp 2 tuổi</a>
@@ -60,7 +64,7 @@
                                     <li><a href="#" class="">Lớp 4 tuổi</a></li>
                                     <li><a href="#" class="">Lớp 5 tuổi</a></li>
                                 </ul>
-                            </div>
+                </div>
 
             </div>
             <div class="list-gread">
@@ -72,13 +76,13 @@
                                 <th style="min-width: 30px;white-space: nowrap;">
                                     <input type="checkbox" name="" id="">
                                 </th>
-                                <th style="min-width: 130px;white-space: nowrap;">
-                                    <label for="">Mã trẻ</label>
+                                <th style="min-width: 230px;white-space: nowrap;">
+                                    <label for="">Tên phiếu</label>
                                     <div class="input-search">
                                         <input type="text" />
                                     </div>
                                 </th>
-                                <th style="min-width: 200px;
+                                <th style="min-width: 150px;
                                 white-space: nowrap;">
                                     <label for="">Tên trẻ</label>
                                     <div class="input-search">
@@ -88,21 +92,13 @@
                                 </th>
                                  <th style="min-width: 150px;
                                 white-space: nowrap;">
-                                    <label for="">Lớp học</label>
-                                    <div class="input-search">
-
-                                        <input type="text"/>
-                                    </div>
-                                </th>
-                                 <th style="min-width: 170px;
-                                white-space: nowrap;">
                                     <label for="">Phụ huynh</label>
                                     <div class="input-search">
 
                                         <input type="text"/>
                                     </div>
                                 </th>
-                                 <th style="min-width: 120px;
+                                 <th style="min-width: 80px;
                                 white-space: nowrap;">
                                     <label for="">Ngày</label>
                                     <div class="input-search">
@@ -112,20 +108,13 @@
                                 </th>
                                  <th style="min-width: 150px;
                                 white-space: nowrap;">
-                                    <label for="">Ngày</label>
+                                    <label for="">Trạng thái</label>
                                     <div class="input-search">
 
                                         <input type="text"/>
                                     </div>
                                 </th>
-                                 <th style="min-width: 150px;
-                                white-space: nowrap;">
-                                    <label for="">Ngày</label>
-                                    <div class="input-search">
-
-                                        <input type="text"/>
-                                    </div>
-                                </th>
+                                
                                 
 
                                 
@@ -138,30 +127,22 @@
                                    <input type="checkbox" name="" id="">
                                 </td>
                                 <td class="text-center">
-                                    MS001
+                                    Đón xuân năm mới
                                 </td>
                                 <td class="text-center">
                                     Tuấn Kiệt
                                 </td>
                                  <td class="text-center">
-                                    3A 
-                                </td>
-                                 <td class="text-center">
                                     Nguyễn Văn Quyết
                                 </td>
                                  <td class="text-center">
-                                    
+                                    23/02/2021
                                 </td>
                                  <td class="text-center">
                                     
                                 </td>
-                                 <td class="text-center">
-                                    
-                                </td>
-                                <td class="text-center">
-                                    
-                                     
-                                </td>
+                                
+                               
                                
                             </tr>
                         </tbody>
@@ -217,11 +198,23 @@ export default {
     height: calc(100vh - 217px);
     border: 1px solid #d9d9d9;
     padding: 6px 10px 0px 13px;
+    font-size: 14px;
 }
 .list-gread{
     background-color: #ffffff;
     width: 83%;
     height: calc(100vh - 211px);
     border-right: 1px solid #d9d9d9;
+}
+
+.allschool a{
+    text-decoration: none;
+}
+ul li{
+    list-style-type: none;
+    padding: 5px;
+}
+ul li a:hover{
+    color: burlywood;
 }
 </style>

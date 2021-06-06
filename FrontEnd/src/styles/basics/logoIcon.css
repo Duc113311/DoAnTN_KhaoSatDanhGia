@@ -168,3 +168,17 @@
     background-repeat: no-repeat;
     background-image: url(/img/ic_Info_20.7af799d6.svg);
 }
+
+.nav-item-icon1 {
+    width: 44px;
+    height: 30px;
+    align-self: center;
+    margin-right: 2px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.nav-dashboad1 {
+    background-image: url(/icon/ic_TongQuan_32.7fe35db4.svg);
+}

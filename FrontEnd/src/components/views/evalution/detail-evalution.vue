@@ -10,7 +10,7 @@
                   <button class="btn-close" @click=btClose1()></button>
                 </div>
           </div>
-        <div class="content-form1">
+        <div class="content-form2">
                 <div class="title1">
                     Trường mầm non Happy Montessori
                 </div>
@@ -41,10 +41,8 @@
                         </div>
                     </div>
                 </div>
-                <div style="height: 478px;
-    overflow: hidden;
-    overflow: scroll;">
-                    <div class="ansew">
+                <div class="form-anse">
+                <div class="ansew">
                     <div>
                         Câu 1: 
                     </div>
@@ -69,131 +67,7 @@
                         
                     </div>
                 </div>
-                 <div class="ansew">
-                    <div>
-                        Câu 1: 
-                    </div>
-                    <div class="common-radio">
-                        <div class="radio-c">
-                             <input type="radio" name="" id="">
-                             <label for="dewey">Hài lòng</label> 
-                        </div>
-                       <div class="radio-c">
-                           <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                       </div>
-                        <div class="radio-c">
-                            <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                        </div>
-                         <div class="radio-c">
-                             <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                         </div>
-                        
-                        
-                    </div>
-                </div>
-                 <div class="ansew">
-                    <div>
-                        Câu 1: 
-                    </div>
-                    <div class="common-radio">
-                        <div class="radio-c">
-                             <input type="radio" name="" id="">
-                             <label for="dewey">Hài lòng</label> 
-                        </div>
-                       <div class="radio-c">
-                           <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                       </div>
-                        <div class="radio-c">
-                            <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                        </div>
-                         <div class="radio-c">
-                             <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                         </div>
-                        
-                        
-                    </div>
-                </div>
-                 <div class="ansew">
-                    <div>
-                        Câu 1: 
-                    </div>
-                    <div class="common-radio">
-                        <div class="radio-c">
-                             <input type="radio" name="" id="">
-                             <label for="dewey">Hài lòng</label> 
-                        </div>
-                       <div class="radio-c">
-                           <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                       </div>
-                        <div class="radio-c">
-                            <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                        </div>
-                         <div class="radio-c">
-                             <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                         </div>
-                        
-                        
-                    </div>
-                </div>
-                 <div class="ansew">
-                    <div>
-                        Câu 1: 
-                    </div>
-                    <div class="common-radio">
-                        <div class="radio-c">
-                             <input type="radio" name="" id="">
-                             <label for="dewey">Hài lòng</label> 
-                        </div>
-                       <div class="radio-c">
-                           <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                       </div>
-                        <div class="radio-c">
-                            <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                        </div>
-                         <div class="radio-c">
-                             <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                         </div>
-                        
-                        
-                    </div>
-                </div>
-                 <div class="ansew">
-                    <div>
-                        Câu 1: 
-                    </div>
-                    <div class="common-radio">
-                        <div class="radio-c">
-                             <input type="radio" name="" id="">
-                             <label for="dewey">Hài lòng</label> 
-                        </div>
-                       <div class="radio-c">
-                           <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                       </div>
-                        <div class="radio-c">
-                            <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                        </div>
-                         <div class="radio-c">
-                             <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                         </div>
-                        
-                        
-                    </div>
-                </div>
+                
                  <div class="ansew">
                     <div>
                         Câu 1: 
@@ -274,7 +148,7 @@ export default {
     grid-template-columns: 1fr 1fr;
     padding: 5px 8px;
     border: 1px solid #acafcab0;
-    margin: 10px 80px;
+    margin: 10px 39px;
     border-radius: 5px;
     line-height: 23px;
 }
@@ -292,5 +166,15 @@ export default {
     width: 100%;
     display: flex;
     margin-top: 10px;
+}
+.content-form2{
+        width: 100%;
+    height: 172px;
+    padding-top: 18px;
+}
+.form-anse{
+    height: 386px;
+    overflow-x: auto;
+    overflow-y: auto;
 }
 </style>
