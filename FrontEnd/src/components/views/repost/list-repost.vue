@@ -115,26 +115,23 @@
     </div>   
      
     </div>
-    <DetailEvalutionCreate 
-        @btCreate="btCreate" 
-        @close="btClose"
-        :showDetail="showDetail"/>
+
         <Remove @btRemove="btRemove" :showremove="showremove"/>
   </div>
 </template>
 
 <script>
-import DetailEvalutionCreate from "../repost/list-evalution-create.vue"
+
 import Remove from "../../base/baseRemove.vue"
 export default {
     name:'ListEvalutionCreate',
     components:{
-        DetailEvalutionCreate,
+
         Remove
     },
     data(){
         return{
-            showDetail:true,
+
             showremove:true
         }
     },
@@ -144,10 +141,7 @@ export default {
             this.showremove=value
         },
         btCreate(){
-            this.showDetail=false
-        },
-        btClose(value){
-            this.showDetail=value
+            this.$router.push('/chitietphieu')
         }
     }
 }
