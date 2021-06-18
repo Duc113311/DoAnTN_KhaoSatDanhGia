@@ -8,9 +8,10 @@
     padding-bottom: 64px;
     width: 770px;">
                   <div class="btThem">
-                    <button>Thêm câu hỏi</button>
+                    <button @click="addQuestion()">Thêm câu hỏi</button>
                   </div>
                   <div class="btGui">
+                     
                     <button>Lưu </button>
                   </div>
                   <div class="title-c">
@@ -23,19 +24,53 @@
 
                   </div>
 
-                  <div class="content-num">
+                  <div>
+                  <div class="content-num"
+                  v-for="(item,index) in valueForm"
+                  :key="index"
+                  >
                     <div class="content-title">
                     <div style="width: 100%;">
                       <input class="txtNum" placeholder="Nhập tiêu đề" type="text" name="" id="">
-                      <select class="txtOption" name="" id="">
-                        <option value="">Trắc nghiệm</option>
+                      <select class="txtOption" name="" id=""  @change="multiplechoice">
                         <option value="">Tự luận</option>
+                        <option value="">Trắc nghiệm</option>
                       </select>
                     </div>
-                    <input placeholder="Mô tả" class="text" style="padding: 2px 10px !important;" type="text" name="" id="">
+                    <input v-bind:class="{'isShowB':isShowB}" placeholder="Mô tả" class="text" style="padding: 2px 10px !important;" type="text" name="" id="">
+                    <div v-bind:class="{'isShowA':isShowA}" class="" style="width: 100%">
+                        <div style="display:flex">  
+                            <div style="width: 120px;margin-right:10px;display: flex;">
+                              <input type="radio" name="" id="">Hài lòng
+                            </div>
+                            <div style="width: 150px;margin-right:10px;display: flex;">
+                              <input type="radio" name="" id="">Rất hài lòng
+                            </div>
+                            <div style="width: 165px;margin-right:10px;display: flex;">
+                              <input type="radio" name="" id="">Không hài lòng
+                            </div>
+                              <div style="width: 180px;margin-right:10px;display: flex;">
+                              <input type="radio" name="" id="">Rất không hài lòng
+                            </div>
+                              <div style="width: 150px;margin-right:10px;display: flex;">
+                              <input type="radio" name="" id="">Bình thường
+                            </div>
+
+                      </div>
+
+                    </div>
+                   
+                    <div>
+                      <button @click="removeForm(index)">Xóa</button>
+                    </div>
+                 
                   </div>
 
                   </div>
+                  <button @click="addQuestion()">Thêm câu hỏi</button>
+                  </div>
+                  
+                  
                 </div>
 
                 
@@ -47,6 +82,40 @@
 
 <script>
 export default {
+  data(){
+    return{
+      valueForm:[],
+      isShowA:true,
+      isShowB:false
+    }
+  },
+  computed:{
+    
+  },
+  methods:{
+    // thêm form câu hỏi
+    addQuestion(){
+      const valueForm={
+        Correct:true
+      }
+      this.valueForm.push(valueForm)
+    },
+    // Xóa form câu hỏi
+    removeForm(index){
+      this.valueForm.splice(index,1)
+    },
+    // Hiển thị tự tuận
+    multiplechoice(){
+      debugger
+      console.log('Vao')
+      
+      this.isShowA=!this.isShowA
+      this.isShowB=true
+    },
+    essay:function(){
+      console.log('hello')
+    }
+  }
 
 }
 </script>
@@ -122,6 +191,7 @@ border-color: inherit;
 .content-num{
 border: 1px solid #ccc;
     border-radius: 13px;
+    margin-top: 20px;
 }
 .txtNum{
   width: 65%;
@@ -153,5 +223,11 @@ border: 1px solid #ccc;
     border-radius: 5px;
     background: aliceblue;
     padding-left: 6px;
+}
+.isShowB{
+  display: none;
+}
+.isShowA{
+  display: none;
 }
 </style>

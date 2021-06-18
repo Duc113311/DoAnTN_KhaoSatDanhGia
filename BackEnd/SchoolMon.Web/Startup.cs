@@ -31,6 +31,7 @@ namespace SchoolMon.Web
         {
 
             services.AddControllers();
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SchoolMon.Web", Version = "v1" });
@@ -42,6 +43,14 @@ namespace SchoolMon.Web
             services.AddScoped<IQuestionReponsitory, QuestionReponsitory>();
             services.AddScoped<IQuestionService, QuestionService>();
 
+            services.AddScoped<IEvalutionCardRepository, EvalutionCardRepo>();
+            services.AddScoped<IEvalutionCardService, EvalutionCardService>();
+
+            services.AddScoped<IChildrenRepo, ChildrenRepo>();
+            services.AddScoped<IChildrenService, ChildrenService>();
+
+            services.AddScoped<IQuestionTypeRepo, QuestionTypeReponsitory>();
+            services.AddScoped<IQuestionTypeService, QuestionTypeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,7 +68,7 @@ namespace SchoolMon.Web
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors(option => option.AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader());
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

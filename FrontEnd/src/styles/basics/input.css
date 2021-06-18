@@ -1,8 +1,9 @@
     .content-left-input {
-        width: 100%;
+        width: 50%;
         float: left;
         padding-left: 20px;
         padding-right: 24px;
+        border-right: 1px solid #ccc;
     }
     
     .form-group label.input-name {

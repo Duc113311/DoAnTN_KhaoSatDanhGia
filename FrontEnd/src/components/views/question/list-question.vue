@@ -43,21 +43,14 @@
                                         <input type="text" />
                                     </div>
                                 </th>
-                                 <th style="min-width: 250px;white-space: nowrap;">
+                                 <th style="min-width: 200px;white-space: nowrap;">
                                     <label for="">Nhóm câu hỏi</label>
                                     <div class="input-search">
                                         <input type="text" />
                                     </div>
                                 </th>
-                                <th style="min-width: 210px;
-                                white-space: nowrap;">
-                                    <label for="">Mô tả</label>
-                                    <div class="input-search">
-
-                                        <input type="text"/>
-                                    </div>
-                                </th>
-                                <th class="text-center">
+                               
+                                <th class="text-center" style="min-width: 150px;white-space: nowrap;"> 
                                     <label for="">Ngày tạo</label>
                                 </th>
                                 <th class="text-center">
@@ -71,29 +64,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="style-row" >
+                            <tr class="style-row" v-for="(item,index) in questions" :key="index">
                                 <td scope="row">
-                                   
+                                   <input type="checkbox" name="" id="">
                                 </td>
                                 <td class="text-center">
-                                    
+                                    {{index++}}
                                 </td>
                                  <td class="text-center">
-                                    
+                                    {{item.questionName}}
                                 </td>
                                 <td class="text-center">
-                                    
+                                    {{item.questionTypeName}}
                                 </td>
                                  <td class="text-center">
-                                    
+                                     {{item.createdDate}}
                                 </td>
                                  <td class="text-center">
-                                    
+                                    <div :class="{'icon-check-tb':item.questionSatus}">
+
+                                    </div>
                                 </td>
-                                <td class="text-center">
-                                    
-                                     
-                                </td>
+                               
                                 <td class="text-center">
                                     <div class="btn-function">
                                         <button class="btn-edit"></button>
@@ -109,7 +101,7 @@
         </div>
         <div class="m-dialog">
             <div class="txt-sum" style="padding-left: 11px;">
-                Tổng số: <b>11</b> kết quả
+                Tổng số: <b>{{questions.length}}</b> kết quả
             </div>
         </div>
     </div>   
@@ -118,12 +110,15 @@
     <DetailQuestion 
         @btCreate="btCreate" 
         @close="btClose"
-        :showDetail="showDetail"/>
+        :showDetail="showDetail"
+        :question="question"
+        :questionTypes="questionTypes"/>
         <Remove @btRemove="btRemove" :showremove="showremove"/>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import DetailQuestion from "../question/detail-question.vue"
 import Remove from "../../base/baseRemove.vue"
 export default {
@@ -135,7 +130,10 @@ export default {
     data(){
         return{
             showDetail:true,
-            showremove:true
+            showremove:true,
+            questions:[],
+            questionTypes:[],
+            question:{}
         }
     },
     methods:{
@@ -145,11 +143,31 @@ export default {
         },
         btCreate(){
             this.showDetail=false
+             setTimeout(() => {
+                    this.$refs.dialog.$refs.questionName.focus();
+                     }, 0);
+            this.question={}
         },
+
         btClose(value){
             this.showDetail=value
+        },
+       
+        async loadData(){
+            await axios.get("https://localhost:44396/api/Questions").then((res)=>{
+            this.questions=res.data;
+        });
+        },
+         async loadGroupData(){
+            await axios.get("https://localhost:44396/api/QuestionType").then((res)=>{
+            this.questionTypes=res.data;
+        });
+        },
+    },
+    created(){
+        this.loadData();
+        this.loadGroupData();
         }
-    }
 }
 </script>
 

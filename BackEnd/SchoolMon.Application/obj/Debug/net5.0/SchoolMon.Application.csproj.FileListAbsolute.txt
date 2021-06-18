@@ -12,3 +12,17 @@ C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Application\obj\Debug\net5.0\
 C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Application\obj\Debug\net5.0\SchoolMon.Application.dll
 C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Application\obj\Debug\net5.0\ref\SchoolMon.Application.dll
 C:\Users\ASUS\source\repos\API.SchoolMon\SchoolMon.Application\obj\Debug\net5.0\SchoolMon.Application.pdb
+C:\Users\ASUS\Desktop\DoAnTN_2021_\DoAnTN_KhaoSatDanhGia\BackEnd\SchoolMon.Application\bin\Debug\net5.0\SchoolMon.Application.deps.json
+C:\Users\ASUS\Desktop\DoAnTN_2021_\DoAnTN_KhaoSatDanhGia\BackEnd\SchoolMon.Application\bin\Debug\net5.0\SchoolMon.Application.dll
+C:\Users\ASUS\Desktop\DoAnTN_2021_\DoAnTN_KhaoSatDanhGia\BackEnd\SchoolMon.Application\bin\Debug\net5.0\ref\SchoolMon.Application.dll
+C:\Users\ASUS\Desktop\DoAnTN_2021_\DoAnTN_KhaoSatDanhGia\BackEnd\SchoolMon.Application\bin\Debug\net5.0\SchoolMon.Application.pdb
+C:\Users\ASUS\Desktop\DoAnTN_2021_\DoAnTN_KhaoSatDanhGia\BackEnd\SchoolMon.Application\obj\Debug\net5.0\SchoolMon.Application.csprojAssemblyReference.cache
+C:\Users\ASUS\Desktop\DoAnTN_2021_\DoAnTN_KhaoSatDanhGia\BackEnd\SchoolMon.Application\obj\Debug\net5.0\SchoolMon.Application.Properties.Resources.resources
+C:\Users\ASUS\Desktop\DoAnTN_2021_\DoAnTN_KhaoSatDanhGia\BackEnd\SchoolMon.Application\obj\Debug\net5.0\SchoolMon.Application.csproj.GenerateResource.cache
+C:\Users\ASUS\Desktop\DoAnTN_2021_\DoAnTN_KhaoSatDanhGia\BackEnd\SchoolMon.Application\obj\Debug\net5.0\SchoolMon.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\Desktop\DoAnTN_2021_\DoAnTN_KhaoSatDanhGia\BackEnd\SchoolMon.Application\obj\Debug\net5.0\SchoolMon.Application.AssemblyInfoInputs.cache
+C:\Users\ASUS\Desktop\DoAnTN_2021_\DoAnTN_KhaoSatDanhGia\BackEnd\SchoolMon.Application\obj\Debug\net5.0\SchoolMon.Application.AssemblyInfo.cs
+C:\Users\ASUS\Desktop\DoAnTN_2021_\DoAnTN_KhaoSatDanhGia\BackEnd\SchoolMon.Application\obj\Debug\net5.0\SchoolMon.Application.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Desktop\DoAnTN_2021_\DoAnTN_KhaoSatDanhGia\BackEnd\SchoolMon.Application\obj\Debug\net5.0\SchoolMon.Application.dll
+C:\Users\ASUS\Desktop\DoAnTN_2021_\DoAnTN_KhaoSatDanhGia\BackEnd\SchoolMon.Application\obj\Debug\net5.0\ref\SchoolMon.Application.dll
+C:\Users\ASUS\Desktop\DoAnTN_2021_\DoAnTN_KhaoSatDanhGia\BackEnd\SchoolMon.Application\obj\Debug\net5.0\SchoolMon.Application.pdb

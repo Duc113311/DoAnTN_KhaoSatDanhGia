@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace SchoolMon.Application.Entities
 {
-    class QuestionType
+   public class QuestionType:BaseEntity
     {
+        public Guid QuestionTypeID { get; set; }
+
+        public string QuestionTypeName { get; set; }
+
+        public string Describe { get; set; }
+
+
     }
 }

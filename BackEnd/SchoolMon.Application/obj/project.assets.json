@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\BackEnd\\SchoolMon.Application\\SchoolMon.Application.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\DoAnTN_KhaoSatDanhGia\\BackEnd\\SchoolMon.Application\\SchoolMon.Application.csproj",
       "projectName": "SchoolMon.Application",
-      "projectPath": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\BackEnd\\SchoolMon.Application\\SchoolMon.Application.csproj",
+      "projectPath": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\DoAnTN_KhaoSatDanhGia\\BackEnd\\SchoolMon.Application\\SchoolMon.Application.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\BackEnd\\SchoolMon.Application\\obj\\",
+      "outputPath": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\DoAnTN_KhaoSatDanhGia\\BackEnd\\SchoolMon.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",

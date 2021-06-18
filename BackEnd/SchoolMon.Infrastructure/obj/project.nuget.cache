@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "E0fxRqH3qUc14cLCoT8gTQGnf7gOczgJD7JOVDsoLrdDfjUshTWoNlRzkDuLmtaWCdj+7QBR/VEMRcgHxRPdDQ==",
+  "dgSpecHash": "p+xp8bdRggvuK/v0sxJbKYNnaJhsxtGUcqO+a2y+3s/fpRTIpUitGR9rCL+beZNbpOv7jgTIT4uKaMFWiGR4vw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\BackEnd\\SchoolMon.Infrastructure\\SchoolMon.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\DoAnTN_KhaoSatDanhGia\\BackEnd\\SchoolMon.Infrastructure\\SchoolMon.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

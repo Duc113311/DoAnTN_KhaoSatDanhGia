@@ -5750,11 +5750,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\BackEnd\\SchoolMon.Infrastructure\\SchoolMon.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\DoAnTN_KhaoSatDanhGia\\BackEnd\\SchoolMon.Infrastructure\\SchoolMon.Infrastructure.csproj",
       "projectName": "SchoolMon.Infrastructure",
-      "projectPath": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\BackEnd\\SchoolMon.Infrastructure\\SchoolMon.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\DoAnTN_KhaoSatDanhGia\\BackEnd\\SchoolMon.Infrastructure\\SchoolMon.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\BackEnd\\SchoolMon.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\DoAnTN_KhaoSatDanhGia\\BackEnd\\SchoolMon.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5773,8 +5773,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\BackEnd\\SchoolMon.Application\\SchoolMon.Application.csproj": {
-              "projectPath": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\BackEnd\\SchoolMon.Application\\SchoolMon.Application.csproj"
+            "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\DoAnTN_KhaoSatDanhGia\\BackEnd\\SchoolMon.Application\\SchoolMon.Application.csproj": {
+              "projectPath": "C:\\Users\\ASUS\\Desktop\\DoAnTN_2021_\\DoAnTN_KhaoSatDanhGia\\BackEnd\\SchoolMon.Application\\SchoolMon.Application.csproj"
             }
           }
         }

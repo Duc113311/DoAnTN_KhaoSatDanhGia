@@ -29,8 +29,8 @@
 
 .revenue-dialog {
     height: 400px;
-    width: 650px;
-    left: calc(50% - 325px);
+    width: 740px;
+    left: calc(50% - 320px);
     position: absolute;
     border: 1px solid #d1f1ff;
     background: white;
@@ -144,6 +144,6 @@
     margin-bottom: 26px;
     cursor: pointer;
     font-size: 13px;
-    width: 40%;
+    width: 48%;
     user-select: none;
 }

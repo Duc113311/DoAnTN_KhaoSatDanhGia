@@ -16,10 +16,13 @@
                             <div class="form-group">
                               <label class="input-name" for="">Tên câu hỏi <b style="color: #d40505;">*</b></label>
                               <input
-                                type="text"
-                                class="form-control" 
-                                tabindex="1"
-                                id="feeName"/>
+                                 type="text"
+                                  class="form-control" 
+                                  tabindex="1"
+                                  v-model="question.questionName"
+                                  id="questionName"
+                                  ref="questionName"
+                                  validateRequired="true"/>
                             </div>
                             <div id="feeName_warning" class="validate-warning">
                               Không được để trống
@@ -30,7 +33,12 @@
                             <div class="group-form">
                               <select name="" id="" tabindex="2" required ref="feeGroupID" class="form-control" >
                                 <option value="">Lựa chọn nhóm</option>
-                                <option></option>
+                                <option v-for="questinType in questionTypes" 
+                                :key="questinType.questionTypeID"
+                                :value="questinType.questionTypeID">
+                                
+                                {{questinType.questionTypeName}}
+                                </option>
                                  </select>
                               <div class="btn-sum" @click="btTypeQuestion"></div>
                              </div>
@@ -41,17 +49,48 @@
                               <textarea
                               style="height: 90px;"
                                 type="text"
-                                class="form-control" 
                                 tabindex="1"
-                                id="feeName"/>
+                                  v-model="question.describe"
+                                  id="describe"
+                                  ref="describe"/>
                             </div>
                             <div id="feeName_warning" class="validate-warning">
                               Không được để trống
                             </div>
-                  </div>     
+                  </div>   
+                   <div class="content-right-input">
+                          <div class="option-check">
+                            <label class="title-check">
+                              <input type="checkbox" v-model="question.satisfied" />
+                              Hài lòng
+                            </label>
+                            <label class="title-check"
+                              >
+                              <input type="checkbox" v-model="question.unsatisfied" />
+                              Rất hài lòng
+                            </label>
+                            <label class="title-check"
+                              >
+                              <input type="checkbox" v-model="question.verySatisfied" />
+                              Không hài lòng
+                            </label>
+                            <label class="title-check"
+                              >
+                              <input type="checkbox" v-model="question.veryUnsatisfied" />
+                             Rẩt không hài lòng
+                            </label>
+                             <label class="title-check"
+                              >
+                              <input type="checkbox" v-model="question.normal" />
+                             Bình thường
+                            </label>
+                            
+                          </div>
+                         
+                        </div>  
           </div>
           <div class="footer-form">
-            <button class="btn-add">Lưu</button>
+            <button class="btn-add" >Lưu</button>
              <button class="btn-add">Lưu và thêm</button>
           <button class="btn-sort">Đóng</button>
           </div>
@@ -73,7 +112,7 @@ export default {
   name:'DetailQuestion',
   components:{DetailQuestionType},
 
-  props:["showDetail"],
+  props:["showDetail","question","questionTypes"],
 
   data(){
     return{

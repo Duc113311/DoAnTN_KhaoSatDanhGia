@@ -42,7 +42,7 @@ namespace SchoolMon.Infrastructure
 
         public IEnumerable<Entity> GetEntities()
         {
-            var entities = _dbConnection.Query<Entity>($"Proc_Get{_tableName}s", commandType: CommandType.StoredProcedure);
+            var entities = _dbConnection.Query<Entity>($"Proc_Get{_tableName}", commandType: CommandType.StoredProcedure);
             return entities;
         }
 

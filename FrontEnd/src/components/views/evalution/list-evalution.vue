@@ -28,45 +28,7 @@
             </div>
         </div>
         <div class="form-table">
-            <div class="gread" >
-                <div class="allschool">
-                     <a href="#subPages" data-toggle="collapse" class="collapsed">
-                     <span>Toàn trường</span> 
-                    </a>
-                </div>
-                <div id="subPages" class="allschool">
-                                <ul class="nav">
-                                    <li>
-                                        <a href="#" class="">Lớp 2 tuổi</a>
-                                        <div id="subPages" class="collapse ">
-                                            <ul class="nav">
-                                                <li>
-                                                    <a href="#" class="">2A</a>
-                                                </li>
-                                                <li><a href="#" class="">2B</a></li>
-                                                <li><a href="#" class="">2C</a></li>
-                                                <li><a href="#" class="">2D</a></li>
-                                            </ul>
-                                         </div>
-                                    </li>
-                                    <li><a href="#" class="">Lớp 3 tuổi</a>
-                                        <div id="subPages" class="collapse ">
-                                            <ul class="nav">
-                                                <li>
-                                                    <a href="#" class="">3A</a>
-                                                </li>
-                                                <li><a href="#" class="">3B</a></li>
-                                                <li><a href="#" class="">3C</a></li>
-                                                <li><a href="#" class="">3D</a></li>
-                                            </ul>
-                                         </div>
-                                    </li>
-                                    <li><a href="#" class="">Lớp 4 tuổi</a></li>
-                                    <li><a href="#" class="">Lớp 5 tuổi</a></li>
-                                </ul>
-                </div>
-
-            </div>
+            
             <div class="list-gread">
                 <div class="tb-data">
                 <div class="border-mtb">
@@ -150,9 +112,6 @@
                                  <td class="text-center">
                                     
                                 </td>
-                                
-                               
-                               
                             </tr>
                         </tbody>
                     </table>
@@ -211,7 +170,7 @@ export default {
 }
 .list-gread{
     background-color: #ffffff;
-    width: 83%;
+    width: 100%;
     height: calc(100vh - 211px);
     border-right: 1px solid #d9d9d9;
 }

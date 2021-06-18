@@ -24,15 +24,15 @@
             </router-link> 
             <router-link to="/phieudanhgia" class="nav-item">
                 <div class="nav-item-icon nav-revenue"></div>
-                <div class="nav-item-text">Quản lý phiếu đánh giá</div>
+                <div class="nav-item-text">Quản lý phiếu học sinh</div>
             </router-link>
             <router-link to="/baocao" class="nav-item">
                 <div class="nav-item-icon nav-revenue"></div>
-                <div class="nav-item-text">Quản lý phiếu tạo</div>
+                <div class="nav-item-text">Quản lý phiếu tạo mới</div>
             </router-link>
             <router-link to="/lophoc" class="nav-item">
                 <div class="nav-item-icon nav-bill"></div>
-                <div class="nav-item-text">Quản lý lớp học</div>
+                <div class="nav-item-text">Quản lý Giao phiếu</div>
              </router-link>
               <router-link to="/tre" class="nav-item">
                 <div class="nav-item-icon nav-num-revenue"></div>

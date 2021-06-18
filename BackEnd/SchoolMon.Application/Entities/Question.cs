@@ -24,15 +24,11 @@ namespace SchoolMon.Application.Entities
         public Guid QuestionTypeID { get; set; }
 
         /// <summary>
-        /// Mã câu hỏi
-        /// </summary>
-        public string QuestionCode { get; set; }
-
-        /// <summary>
         /// Tên câu hỏi
         /// </summary>
         public string QuestionName { get; set; }
 
+        public string QuestionTypeName { get; set; }
         /// <summary>
         /// Mô tả
         /// </summary>
