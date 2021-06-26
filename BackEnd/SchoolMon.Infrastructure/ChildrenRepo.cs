@@ -24,9 +24,17 @@ namespace SchoolMon.Infrastructure
             param.Add("@ChildrenName", childrenName, DbType.String);
             param.Add("@ClassName", className, DbType.String);
 
-            var values = _dbConnection.Query<Children>("Proc_GetFilter", param, commandType: CommandType.StoredProcedure).ToList();
+            var values = _dbConnection.Query<Children>("Proc_FilterChildren", param, commandType: CommandType.StoredProcedure).ToList();
 
             return values;
+        }
+
+        public IEnumerable<Children> GetChildrenById(Guid entityId)
+        {
+            var parameter = new DynamicParameters();
+            parameter.Add("@ChildrenId", entityId, DbType.Guid);
+            var entitie = _dbConnection.Query<Children>($"Proc_GetChildrenById", parameter, commandType: CommandType.StoredProcedure).ToList();
+            return entitie;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using SchoolMon.Application.Entities;
 using SchoolMon.Application.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,17 @@ namespace SchoolMon.Application.Services
             var values = _childrenRepo.GetFilter(childrenName, className);
             return values;
         }
+
+       
+
+        IEnumerable<Children> IChildrenService.GetChildrenById(Guid childrenId)
+        {
+            return _childrenRepo.GetChildrenById(childrenId);
+        }
+
+
+
+
 
         #endregion
 

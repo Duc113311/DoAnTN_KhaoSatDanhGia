@@ -24,5 +24,19 @@ namespace SchoolMon.Web.Controllers
             var listentity = _childrenService.GetFilter(childrenName, className);
             return Ok(listentity);
         }
+
+        [HttpGet("Id")]
+        public IActionResult GetChildrenId(Guid childrenId)
+        {
+            var entity = _childrenService.GetChildrenById(childrenId);
+            if (entity != null)
+            {
+                return Ok(entity);
+            }
+            else
+            {
+                return StatusCode(204);
+            }
+        }
     }
 }

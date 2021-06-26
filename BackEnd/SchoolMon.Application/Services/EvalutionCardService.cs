@@ -23,9 +23,9 @@ namespace SchoolMon.Application.Services
         #endregion
 
         #region fun
-        public List<EvalutionCard> InsertEvalutionCard (string evalutionName,string listevalution)
+        public List<EvalutionCard> InsertEvalutionCard (string evalutionName,string describe, string listevalution)
         {
-            var values = _evalutionCardRepository.InsertEvalutionCard(evalutionName, listevalution);
+            var values = _evalutionCardRepository.InsertEvalutionCard(evalutionName, describe, listevalution);
             return values;
         }
         #endregion

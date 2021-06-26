@@ -10,5 +10,8 @@ namespace SchoolMon.Application.Interfaces
    public interface IChildrenService:IBaseService<Children>
     {
         List<Children> GetFilter(string childrenName, string className);
+
+        IEnumerable<Children> GetChildrenById(Guid childrenId);
+
     }
 }

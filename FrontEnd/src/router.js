@@ -8,6 +8,7 @@ import Repost from "./components/views/repost/list-repost.vue"
 import RepostList from "./components/views/repost/list-repostview.vue"
 import Login from "./components/Login.vue"
 import Generality from "./components/Generality.vue"
+import StudentSubmit from "./components/StudentSubmit.vue"
 
 const routes = [
     { path: '/', name: 'Login', component: Login },
@@ -20,6 +21,7 @@ const routes = [
     { path: '/chitietphieu', component: RepostList },
     { path: '/lophoc', component: Class },
     { path: '/baocao', component: Repost },
+    { path: '/hocsinhrep', component: StudentSubmit }
 
 ]
 export default routes

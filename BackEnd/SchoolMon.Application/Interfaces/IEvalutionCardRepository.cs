@@ -9,6 +9,6 @@ namespace SchoolMon.Application.Interfaces
 {
    public interface IEvalutionCardRepository :IBaseRepository<EvalutionCard>
     {
-        List<EvalutionCard> InsertEvalutionCard(string EvalutionName, string listEvalution); 
+        List<EvalutionCard> InsertEvalutionCard(string EvalutionName,string Describe, string listEvalution); 
     }
 }

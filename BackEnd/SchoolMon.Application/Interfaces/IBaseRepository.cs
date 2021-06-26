@@ -47,6 +47,5 @@ namespace SchoolMon.Application.Interfaces
         /// <param name="entityId"></param>
         /// <returns></returns>
         int Delete(Guid entityId);
-        Entity GetEntityByProperty(Entity entity, PropertyInfo property);
     }
 }

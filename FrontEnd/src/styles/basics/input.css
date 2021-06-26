@@ -11,6 +11,8 @@
         display: inline-block;
         margin-bottom: 8px;
         margin-top: 5px;
+        font-size: 15px;
+        color: #4c353b;
     }
     
     input.form-control,
@@ -121,22 +123,11 @@
     
     input.required-out,
     select.required-out {
-        border: 1px solid red;
+        border: 2px solid red;
     }
     
     .border-red {
         border: 1px solid red;
-    }
-    
-    .validate-warning {
-        font-family: GoogleSans-Bold;
-        font-size: 13px;
-        color: red;
-        background-color: white;
-        position: absolute;
-        left: 320px;
-        top: 120px;
-        display: none;
     }
     /* input[type="text"],
     input[type="number"],

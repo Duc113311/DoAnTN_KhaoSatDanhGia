@@ -12,6 +12,14 @@ namespace SchoolMon.Application.Interfaces
     /// </summary>
     public interface IQuestionReponsitory : IBaseRepository<Question>
     {
+        int DeleteQuestion(Guid questionId);
+
+        /// <summary>
+        /// Xóa nhiều
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns></returns>
+        int DeleteAssets(string[] array);
 
     }
 }

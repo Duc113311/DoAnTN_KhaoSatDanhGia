@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace SchoolMon.Application.Entities
 {
-    class ClassChildren
+   public class ClassChildren:BaseEntity
     {
+        public Guid ClassID { get; set; }
+
+        public string ClassName { get; set; }
+
+        public string TeacherName { get; set; }
     }
 }

@@ -16,10 +16,19 @@
         </div>
         <div class="content-function">
             <div class="header-left-bt">
-                
+                 <el-select v-model="value" placeholder="Select">
+                    <el-option
+                    v-for="item in options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                    </el-option>
+                </el-select>
             </div>
             <div class="header-right-bt">
-                <button id="btn-Add" class="btn-add" @click="btCreate()">Thêm mới</button>
+                
+                <button id="btn-Add" class="btn-add" @click="btCreate()">
+                    <i class="el-icon-document-add"></i> Giao phiếu</button>
                 <button class="btn-delete" @click="btRemove()"></button>
             </div>
         </div>
@@ -35,58 +44,49 @@
                                 <th>
                                     <label for="">STT</label>
                                 </th>
-                                <th style="min-width: 190px;white-space: nowrap;">
+                                 <th style="min-width: 350px;
+                                white-space: nowrap;">
+                                    <label for="">Tên phiếu</label>
+                                    <div class="input-search">
+
+                                        <input type="text"/>
+                                    </div>
+                                </th>
+                                <th style="min-width: 130px;white-space: nowrap;">
                                     <label for="">Tên trẻ</label>
                                     <div class="input-search">
                                         <input type="text" />
                                     </div>
                                 </th>
-                                 <th style="min-width: 190px;white-space: nowrap;">
+                                <th style="min-width: 80px;
+                                white-space: nowrap;">
+                                    <label for="">Tên lớp</label>
+                                    <div class="input-search">
+
+                                        <input type="text"/>
+                                    </div>
+                                </th>
+                                 <th style="min-width: 150px;white-space: nowrap;">
                                     <label for="">Phụ huynh</label>
                                     <div class="input-search">
                                         <input type="text" />
                                     </div>
                                 </th>
-                                <th style="min-width: 150px;
-                                white-space: nowrap;">
-                                    <label for="">Biệt danh</label>
-                                    <div class="input-search">
-
-                                        <input type="text"/>
-                                    </div>
-                                </th>
+                               
                                 <th style="min-width: 112px;
                                 white-space: nowrap;">
-                                    <label for="">Độ tuổi</label>
+                                    <label for="">Ngày đánh giá</label>
                                     <div class="input-search">
 
                                         <input type="text"/>
                                     </div>
                                 </th>
-                                <th style="min-width: 170px;
+                                <th style="min-width: 100px;
                                 white-space: nowrap;">
-                                    <label for="">Sinh nhật</label>
-                                    <div class="input-search">
-
-                                        <input type="text"/>
-                                    </div>
-                                </th>
-                                <th style="min-width: 242px;
-                                white-space: nowrap;">
-                                    <label for="">Sở thích</label>
-                                    <div class="input-search">
-
-                                        <input type="text"/>
-                                    </div>
-                                </th>
-                                <th class="text-center" style="min-width: 117px;
-                                white-space: nowrap;">
-                                    <label for="">Ngày nhập học</label>
-                                </th>
-                                <th class="text-center">
                                     <label for="">Trạng thái</label>
+                                    <div class="input-search">
+                                    </div>
                                 </th>
-                                
                                 <th class="text-center">
 
                                 </th>
@@ -108,6 +108,9 @@
                                     
                                 </td>
                                  <td class="text-center">
+                                    
+                                </td>
+                                <td class="text-center">
                                     
                                 </td>
                                  <td class="text-center">

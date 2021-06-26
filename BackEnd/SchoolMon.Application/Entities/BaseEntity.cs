@@ -75,27 +75,26 @@ namespace SchoolMon.Application.Entities
         /// <summary>
         /// Trạng thái của đối tượng
         /// </summary>
-        public EntityState EntityState { get; set; } = EntityState.AddNew;
 
         /// <summary>
         /// Người tạo
         /// </summary>
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
 
         /// <summary>
         /// Ngày tạo
         /// </summary>
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         /// <summary>
         /// Người sửa
         /// </summary>
-        public string ModifiledBy { get; set; }
+        public string? ModifiledBy { get; set; }
 
         /// <summary>
         /// Ngày sửa
         /// </summary>
-        public DateTime ModifiledDate { get; set; }
+        public DateTime? ModifiledDate { get; set; }
 
         #endregion 
     }

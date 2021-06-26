@@ -51,6 +51,20 @@ namespace SchoolMon.Web
 
             services.AddScoped<IQuestionTypeRepo, QuestionTypeReponsitory>();
             services.AddScoped<IQuestionTypeService, QuestionTypeService>();
+
+            services.AddScoped<IEvalutionSubmitRepo, EvalutionSubmitRepo>();
+            services.AddScoped<IEvalutionSubmitService, EvalutionSubmitService>();
+
+
+            services.AddScoped<IAccountRepo, AccountRepo>();
+            services.AddScoped<IAccountService, AccountService>();
+
+            services.AddScoped<IEvalutionService, EvalutionService>();
+            services.AddScoped<IEvalutionRepo, EvalutionRepo>();
+
+            services.AddScoped<IClassChildrenService, ClassChildrenService>();
+            services.AddScoped<IClassChildrenRepo, ClassChildrenRepo>();
+          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

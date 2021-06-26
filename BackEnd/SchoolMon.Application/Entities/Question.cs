@@ -21,14 +21,13 @@ namespace SchoolMon.Application.Entities
         /// <summary>
         /// Khóa phụ: Mã loại câu hỏi
         /// </summary>
-        public Guid QuestionTypeID { get; set; }
+        public Guid? QuestionTypeID { get; set; }
 
         /// <summary>
         /// Tên câu hỏi
         /// </summary>
         public string QuestionName { get; set; }
 
-        public string QuestionTypeName { get; set; }
         /// <summary>
         /// Mô tả
         /// </summary>
@@ -64,7 +63,7 @@ namespace SchoolMon.Application.Entities
         /// </summary>
         public int QuestionSatus { get; set; }
 
-        
+        public string Paragraph { get; set; }
         #endregion
     }
 }

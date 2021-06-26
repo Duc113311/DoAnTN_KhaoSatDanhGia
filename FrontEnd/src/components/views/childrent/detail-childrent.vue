@@ -2,89 +2,39 @@
   <div class="detailQuestion">
      <div class="m-model" :class="{ showDetail: showDetail }">
         <div class="back-dialog"></div>
-        <div class="revenue-dialog dialog">
+        <div class="revenue-dialog-chis dialog">
           <div class="title-form">
-                <label class="title-form-revenue"> <b>Thêm thông tin câu hỏi</b></label>
+                <label class="title-form-revenue"> <b>Thêm thông tin trẻ</b></label>
         
                 <div class="btn-x">
                   <button class="btn-close" @click=btClose()></button>
                 </div>
           </div>
         <div class="content-form">
-                  <div class="content-left-input">
-                            <!-- Tên câu hỏi -->
-                            <div class="form-group">
-                              <label class="input-name" for="">Tên câu hỏi <b style="color: #d40505;">*</b></label>
-                              <input
-                                type="text"
-                                class="form-control" 
-                                tabindex="1"
-                                id="feeName"/>
-                            </div>
-                            <div id="feeName_warning" class="validate-warning">
-                              Không được để trống
-                            </div>
-                            <!-- Nhóm câu hỏi -->
-                            <div class="form-group">
-                            <label for="" class="input-name">Thuộc nhóm câu hỏi </label>
-                            <div class="group-form">
-                              <select name="" id="" tabindex="2" required ref="feeGroupID" class="form-control" >
-                                <option value="">Lựa chọn nhóm</option>
-                                <option></option>
-                                 </select>
-                              <div class="btn-sum"></div>
-                             </div>
-                            </div>
-                            <!-- Mô tả -->
-                            <div class="form-group">
-                              <label class="input-name" for="">Mô tả <b style="color: #d40505;">*</b></label>
-                              <textarea
-                                type="text"
-                                class="form-control" 
-                                tabindex="1"
-                                id="feeName"/>
-                            </div>
-                            <div id="feeName_warning" class="validate-warning">
-                              Không được để trống
-                            </div>
-                  </div>
-                  <div class="content-right-input">
-                          <div class="option-check">
-                            <label class="title-check">
-                              <input type="checkbox" />
-                              Hài lòng
-                            </label>
-                            <label class="title-check"
-                              >
-                              <input type="checkbox" />
-                              Rất hài lòng
-                            </label>
-                            <label class="title-check"
-                              >
-                              <input type="checkbox"  />
-                              Không hài lòng
-                            </label>
-                            <label class="title-check"
-                              >
-                              <input type="checkbox" />
-                             Rẩt không hài lòng
-                            </label>
-                             <label class="title-check"
-                              >
-                              <input type="checkbox" />
-                             Bình thường
-                            </label>
-                            
-                          </div>
-                         
-                        </div>
+          <template>
+            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
+            <!-- Tên  -->
+            <el-form-item label="Activity name" prop="name">
+              <el-input v-model="ruleForm.name"></el-input>
+            </el-form-item>
+            <!-- Lớp -->
+            <el-form-item label="Activity zone" prop="region">
+              <el-select v-model="ruleForm.region" placeholder="Activity zone" >
+                <el-option label="Zone one" value="shanghai"></el-option>
+                <el-option label="Zone two" value="beijing"></el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="Activity form" prop="desc">
+              <el-input type="textarea" v-model="ruleForm.desc"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="submitForm('ruleForm')">Create</el-button>
+              <el-button @click="resetForm('ruleForm')">Reset</el-button>
+            </el-form-item>
+          </el-form>
+          </template>
                 
                 
-          </div>
-          <div class="footer-form">
-            <button class="btn-add">Lưu</button>
-             <button class="btn-add">Lưu và thêm</button>
-          <button class="btn-sort">Đóng</button>
           </div>
             
           </div>
@@ -104,12 +54,59 @@ export default {
   data(){
     return{
 
+      ruleForm: {
+          name: '',
+          region: '',
+          date1: '',
+          date2: '',
+          delivery: false,
+          type: [],
+          resource: '',
+          desc: ''
+        },
+        rules: {
+          name: [
+            { required: true, message: 'Please input Activity name', trigger: 'blur' },
+            { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' }
+          ],
+          region: [
+            { required: true, message: 'Please select Activity zone', trigger: 'change' }
+          ],
+          date1: [
+            { type: 'date', required: true, message: 'Please pick a date', trigger: 'change' }
+          ],
+          date2: [
+            { type: 'date', required: true, message: 'Please pick a time', trigger: 'change' }
+          ],
+          type: [
+            { type: 'array', required: true, message: 'Please select at least one activity type', trigger: 'change' }
+          ],
+          resource: [
+            { required: true, message: 'Please select activity resource', trigger: 'change' }
+          ],
+          desc: [
+            { required: true, message: 'Please input activity form', trigger: 'blur' }
+          ]
+        }
+
     }
   },
   methods:{
-    btClose(){
-      this.$emit("close",true)
-    }
+    
+
+     submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      }
   }
 }
 </script>
@@ -118,5 +115,15 @@ export default {
 .showDetail{
     display: none;
 }
-
+.revenue-dialog-chis{
+  height: 600px;
+    width: 840px;
+    left: calc(50% - 420px);
+    position: absolute;
+    border: 1px solid #d1f1ff;
+    background: white;
+    top: calc(50% - 300px);
+    z-index: 3;
+    border-radius: 3px;
+}
 </style>

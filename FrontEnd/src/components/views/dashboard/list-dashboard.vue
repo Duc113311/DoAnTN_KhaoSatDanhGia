@@ -14,42 +14,44 @@
 								<div class="col-md-3">
 									<div class="metric">
 										<span class="icon">
-
+                                            <i class="el-icon-s-data" style="font-size: 25px"></i>
                                         </span>
 										<p>
 											<span class="number">1,252</span>
-											<span class="title">Downloads</span>
+											<span class="title">Số phiếu phát hành</span>
 										</p>
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="metric">
 										<span class="icon">
-                                            
+                                            <i class="el-icon-s-custom" style="font-size: 25px"></i>
                                         </span>
 										<p>
 											<span class="number">203</span>
-											<span class="title">Sales</span>
+											<span class="title">Trẻ nhập học</span>
 										</p>
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="metric">
 										<span class="icon">
-                                            <div class="nav-item-icon1 nav-dashboad1"></div>
+                                            <i class="el-icon-s-order" style="font-size: 25px"></i>
                                         </span>
 										<p>
 											<span class="number">274,678</span>
-											<span class="title">Visits</span>
+											<span class="title">Câu hỏi</span>
 										</p>
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="metric">
-										<span class="icon"></span>
+										<span class="icon">
+                                            <i class="el-icon-s-help" style="font-size: 25px;margin-top: 11px;"></i>
+                                        </span>
 										<p>
 											<span class="number">35%</span>
-											<span class="title">Conversions</span>
+											<span class="title">Lớp học</span>
 										</p>
 									</div>
 								</div>

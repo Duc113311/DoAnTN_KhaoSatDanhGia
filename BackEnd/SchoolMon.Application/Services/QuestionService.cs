@@ -12,6 +12,7 @@ namespace SchoolMon.Application.Services
     {
         #region DECLARE
         IQuestionReponsitory _questionReponsitory;
+        ServiceResult _serviceResult;
         #endregion
 
         #region CONSTRUCTOR
@@ -21,5 +22,31 @@ namespace SchoolMon.Application.Services
         }
 
         #endregion
+
+        public int DeleteQuestion(Guid questionId)
+        {
+            var value = _questionReponsitory.DeleteQuestion(questionId);
+            return value;
+        }
+
+        public ServiceResult DeleteAssets(string[] array)
+        {
+            var rowEffect = _questionReponsitory.DeleteAssets(array);
+            if (rowEffect > 0)
+            {
+                _serviceResult.Messenger = Properties.Resources.msg_delete;
+                _serviceResult.Data = rowEffect;
+                _serviceResult.SchoolCode = Enums.SchoolCode.IsValid;
+                return _serviceResult;
+                
+            }
+            else
+            {
+                _serviceResult.Messenger = Properties.Resources.msg_isNot;
+                _serviceResult.Data = rowEffect;
+                _serviceResult.SchoolCode = Enums.SchoolCode.NotValid;
+                return _serviceResult;
+            }
+        }
     }
 }

@@ -10,5 +10,7 @@ namespace SchoolMon.Application.Interfaces
    public interface IChildrenRepo:IBaseRepository<Children>
     {
         List<Children> GetFilter(string childrenName, string className);
+
+        IEnumerable<Children> GetChildrenById(Guid childrenId);
     }
 }

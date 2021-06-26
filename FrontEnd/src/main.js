@@ -2,9 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 // Khai báo thư viện router
 import VueRouter from 'vue-router'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+
 import routes from './router';
+
 import {
     Pagination,
     Dialog,
@@ -168,10 +168,9 @@ Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
-Vue.use(ElementUI);
 
-import Element from 'element-ui';
-Vue.use(Element, { size: 'small', zIndex: 3000 });
+
+
 const router = new VueRouter({
     routes
 })

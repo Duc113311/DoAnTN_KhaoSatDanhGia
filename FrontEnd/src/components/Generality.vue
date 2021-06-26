@@ -6,11 +6,14 @@
                   <div class="title-left">
                       <img src="#" alt="" srcset="">
                        <div class="form-group">
-                           <select class="custom-select" name="" id="">
-                               <option selected>Trường HappyMon</option>
-                               <option value="">CS1. Happy Montessori</option>
-                               <option value="">CS1. Happy Montessori</option>
-                           </select>
+                           <el-select v-model="value" placeholder="Lựa chọn trường">
+                            <el-option
+                                v-for="item in options"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                                </el-option>
+                           </el-select>
                        </div>
                   </div>
                   <div class="title-right">
@@ -25,7 +28,7 @@
                           <div class="logo1"></div>
                           <label class="textLogo" for="">Học sinh</label>
                       </div>
-                      <div class="category">
+                      <div class="category " @click="btTeacher">
                           <div class="logo2"></div>
                           <label class="textLogo" for="">Giáo Viên</label>
                       </div>
@@ -46,12 +49,19 @@ export default {
     name:'Generality',
     data(){
         return{
+            options: [{
+          value: 'CS1.Trường mầm non Happy Monstessori',
+          label: 'CS1.Trường mầm non Happy Monstessori'
+        },
             
-        }
+            ]}
     },
     methods:{
         btStudent(){
-            this.$router.push("/danhmuc");
+            this.$router.push("/hocsinhrep");
+        },
+        btTeacher(){
+            this.$router.push("/danhmuc")
         }
     }
 
@@ -92,6 +102,7 @@ export default {
     overflow: hidden;
     box-shadow: 0 9px 24px 3px #4b2a52;
     border-radius: 9px;
+    padding-top: 11px;
 }
 .category:hover{
     box-shadow: 0 9px 24px 3px #85538f;
@@ -100,7 +111,7 @@ export default {
 .logo1{
     width: 150px;
     height: 104px;
-    background-image: url(/img/giao_duc_2019_0201163418.69775361.png);
+    background-image: url(../assets/img/hocsinh.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -108,7 +119,7 @@ export default {
 .logo2{
     width: 150px;
     height: 104px;
-    background-image: url(/img/giao_duc_2019_0201163418.69775361.png);
+    background-image: url(../assets/img/giaovien.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -117,7 +128,7 @@ export default {
 .logo3{
     width: 150px;
     height: 104px;
-    background-image: url(/img/giao_duc_2019_0201163418.69775361.png);
+    background-image: url(../assets/img/quanly.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;

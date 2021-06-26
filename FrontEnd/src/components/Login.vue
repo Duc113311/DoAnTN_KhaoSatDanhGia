@@ -28,12 +28,14 @@
             type="text"
             class="userName"
             placeholder="Nhập tên tài khoản"
+            v-model="account.userName"
           />
           <input type="password" class="passWord" placeholder="Nhập mật khẩu" />
           <input
             type="password"
             class="passWord"
             placeholder="Xác nhận lại mật khẩu"
+            v-model="account.passWord"
           />
           <div class="signup-footer">
             <button class="btn-xl">HỦY</button>
@@ -49,18 +51,26 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
      name: "Login",
      data(){
          return{
-
+           account:{}
          }
      },
       methods: {
-    btnSignIn() {
-      
-        this.$router.push("/generality");
-    },
+        btnSignIn() {
+          const param=`userName=${this.account.userName}`+ `&passWord=${this.account.passWord}`
+          axios.get("https://localhost:44396/api/Account/filter?"+ param).then((result)=>{
+            this.account=result.data;
+          });
+          if(this.account !=null){
+            this.$router.push("/generality");
+          }else{
+            console.log("Sai tài khoản mật khẩu")
+          }
+        },
   },
 }
 </script>

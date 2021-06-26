@@ -17,5 +17,20 @@ namespace SchoolMon.Web.Controllers
         {
             _questionService = questionService;
         }
+
+        [HttpDelete("Question")]
+        public int DeleteQuestion(Guid questionId)
+        {
+            var value = _questionService.DeleteQuestion(questionId);
+            return value;
+        }
+
+        [HttpDelete("DeleteAll")]
+        public IActionResult DeleteAssets([FromBody] string[] array)
+        {
+            var result = _questionService.DeleteAssets(array);
+            return StatusCode(201, result);
+        }
+
     }
 }

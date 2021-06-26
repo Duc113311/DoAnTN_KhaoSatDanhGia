@@ -22,7 +22,7 @@
             </div>
             <div class="header-right-bt">
                 
-                <button id="btn" class="btn-add" @click="btViewEvalution()">Xem</button>
+                
                 <button id="btn" class="btn-add">In phiếu</button>
                 <button id="btn" class="btn-add" >Đánh giá</button>
             </div>
@@ -44,10 +44,12 @@
                                         <input type="text" />
                                     </div>
                                 </th>
-                                  <th style="min-width: 230px;white-space: nowrap;">
-                                    <label for="">Loại phiếu</label>
+                                  <th style="min-width: 100px;
+                                white-space: nowrap;">
+                                    <label for="">Mã trẻ</label>
                                     <div class="input-search">
-                                        <input type="text" />
+
+                                        <input type="text"/>
                                     </div>
                                 </th>
                                 <th style="min-width: 150px;
@@ -66,14 +68,15 @@
                                         <input type="text"/>
                                     </div>
                                 </th>
-                                 <th style="min-width: 80px;
+                                 <th style="min-width: 150px;
                                 white-space: nowrap;">
-                                    <label for="">Ngày</label>
+                                    <label for="">Lớp học</label>
                                     <div class="input-search">
 
-                                        <input type="date"/>
+                                        <input type="text"/>
                                     </div>
                                 </th>
+                                
                                  <th style="min-width: 150px;
                                 white-space: nowrap;">
                                     <label for="">Trạng thái</label>
@@ -82,35 +85,39 @@
                                         <input type="text"/>
                                     </div>
                                 </th>
-                                
-                                
-
-                                
-
+                                 <th style="min-width: 80px;
+                                white-space: nowrap;">
+                                    
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="style-row" >
+                            <tr class="style-row" v-for="i in evalutionSubmit" :key="i.evalutionSubmitID">
                                 <td scope="row">
                                    <input type="checkbox" name="" id="">
                                 </td>
                                 <td class="text-center">
-                                    Đón xuân năm mới
+                                    {{i.evalutionName}}
                                 </td>
                                 <td class="text-center">
-                                    Tuấn Kiệt
+                                    {{i.childrenCode}}
+                                </td>
+                                <td class="text-center">
+                                    {{i.childrenName}}
                                 </td>
                                  <td class="text-center">
-                                    Nguyễn Văn Quyết
+                                    {{i.parentName}}
                                 </td>
                                  <td class="text-center">
-                                    23/02/2021
+                                    {{i.className}}
                                 </td>
                                  <td class="text-center">
-                                    
+                                    {{ientityState}}
                                 </td>
-                                 <td class="text-center">
-                                    
+                                 <td class="text-center view">
+                               
+                                        <i @click="btViewEvalution()" class="el-icon-view"></i>
+                                  
                                 </td>
                             </tr>
                         </tbody>
@@ -135,6 +142,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import DetailEvalution from "../evalution/detail-evalution.vue"
 export default {
     name:'ListEvalution',
@@ -144,7 +152,8 @@ export default {
     data(){
         
         return{
-            isShowEvalution:true
+            isShowEvalution:true,
+            evalutionSubmit:[]
         }
     },
     methods:{
@@ -154,7 +163,19 @@ export default {
         },
         btclose(value){
             this.isShowEvalution=value
+        },
+
+        async loadEvalutionSubmit(){
+            await axios.get("https://localhost:44396/api/EvalutionSubmit/getAllSub").then((res) => {
+        this.evalutionSubmit = res.data;
+            });
         }
+    },
+
+    created(){
+        var me =this;
+
+        me.loadEvalutionSubmit();
     }
 }
 </script>
@@ -174,7 +195,9 @@ export default {
     height: calc(100vh - 211px);
     border-right: 1px solid #d9d9d9;
 }
-
+tbody tr.style-row {
+    padding: 10px;
+}
 .allschool a{
     text-decoration: none;
 }
@@ -184,5 +207,8 @@ ul li{
 }
 ul li a:hover{
     color: burlywood;
+}
+.view{
+    text-align: center;
 }
 </style>

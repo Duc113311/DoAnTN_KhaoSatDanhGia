@@ -26,5 +26,8 @@ namespace SchoolMon.Application.Entities
 
         public string Paragraph { get; set; }
 
+        public string EvalutionName { get; set; }
+
+
     }
 }

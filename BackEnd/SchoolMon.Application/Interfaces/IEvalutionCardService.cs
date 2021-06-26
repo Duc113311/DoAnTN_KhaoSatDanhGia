@@ -9,7 +9,7 @@ namespace SchoolMon.Application.Interfaces
 {
     public interface IEvalutionCardService : IBaseService<EvalutionCard>
     {
-        List<EvalutionCard> InsertEvalutionCard(string EvalutionName, string listEvalution);
+        List<EvalutionCard> InsertEvalutionCard(string EvalutionName,string Describe, string listEvalution);
 
     }
 }

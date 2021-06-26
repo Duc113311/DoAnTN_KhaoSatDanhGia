@@ -49,7 +49,7 @@ namespace SchoolMon.Infrastructure
         public Entity GetEntityById(Guid entityId)
         {
             var parameter = new DynamicParameters();
-            parameter.Add($@"{_tableName}Id", entityId, DbType.String);
+            parameter.Add($@"{_tableName}Id", entityId, DbType.Guid);
             var entitie = _dbConnection.Query<Entity>($"Proc_Get{_tableName}ById", parameter, commandType: CommandType.StoredProcedure).FirstOrDefault();
             return entitie;
         }
@@ -62,6 +62,7 @@ namespace SchoolMon.Infrastructure
             {
                 try
                 {
+
                     var parameters = MappingDbType(entity);
                     //Thực hiện thêm khách hàng:
                     rowAffects = _dbConnection.Execute($"Proc_Insert{_tableName}", parameters, transaction, commandType: CommandType.StoredProcedure);
@@ -89,9 +90,9 @@ namespace SchoolMon.Infrastructure
                     rowAffect = _dbConnection.Execute($"Proc_Update{_tableName}", parameters, transaction, commandType: CommandType.StoredProcedure);
                     transaction.Commit();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+                    Console.Write(ex);
                     transaction.Rollback();
                 }
             }
@@ -107,13 +108,13 @@ namespace SchoolMon.Infrastructure
                 try
                 {
                     var parameters = new DynamicParameters();
-                    parameters.Add($@"{_tableName}Id", entityId, DbType.String);
-                    rowAffect = _dbConnection.Execute($"Proc_Delete{_tableName}", parameters, transaction, commandType: CommandType.StoredProcedure);
+                    parameters.Add($@"{_tableName}Id", entityId, DbType.Guid);
+                    rowAffect = _dbConnection.Execute($"Proc_Delete{_tableName}s", parameters, transaction, commandType: CommandType.StoredProcedure);
                     transaction.Commit();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex);
                     transaction.Rollback();
                 }
             }
@@ -136,11 +137,11 @@ namespace SchoolMon.Infrastructure
                 var propertyName = property.Name;
                 var propertyValue = property.GetValue(entity);
                 var propertyType = property.PropertyType;
-                if (propertyType == typeof(Guid) || propertyType == typeof(Guid?))
-                {
-                    parameters.Add($"@{propertyName}", propertyValue, DbType.String);
-                }
-                else if (propertyType == typeof(bool) || propertyType == typeof(bool?))
+                //if (propertyType == typeof(Guid) || propertyType == typeof(Guid?))
+                //{
+                //    parameters.Add($"@{propertyName}", propertyValue, DbType.String);
+                //}
+                 if (propertyType == typeof(bool) || propertyType == typeof(bool?))
                 {
                     //Nếu không thành công thì comment dòng dưới và mở comment propertyType
                     var dbValue = ((bool)propertyValue == true ? 1 : 0);
@@ -153,33 +154,7 @@ namespace SchoolMon.Infrastructure
             }
             return parameters;
         }
-        /// <summary>
-        /// Lấy ra đối tượng qua property
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <param name="property"></param>
-        /// <returns>Đối tượng</returns>
-        public Entity GetEntityByProperty(Entity entity, PropertyInfo property)
-        {
-            var propertyName = property.Name;
-            var propertyValue = property.GetValue(entity);
-            var keyValue = entity.GetType().GetProperty($"{_tableName}Id").GetValue(entity);
-            var query = string.Empty;
-            if (entity.EntityState == EntityState.AddNew)
-            {
-                query = $"SELECT * FROM {_tableName} WHERE {propertyName} = '{propertyValue}'";
-            }
-            else if (entity.EntityState == EntityState.Update)
-            {
-                query = $"SELECT * FROM {_tableName} WHERE {propertyName} = '{propertyValue}' AND {_tableName}Id <> '{keyValue}'";
-            }
-            else
-            {
-                return null;
-            }
-            var entityReturn = _dbConnection.Query<Entity>(query, commandType: CommandType.Text).FirstOrDefault();
-            return entityReturn;
-        }
+      
         #endregion
     }
 }

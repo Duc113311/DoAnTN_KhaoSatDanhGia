@@ -15,15 +15,18 @@
                     Trường mầm non Happy Montessori
                 </div>
                 <div class="title2">
-                    Địa chỉ: 
+                    Địa chỉ: Số 155A đường Vũ Văn Cần, phường Bần Yên Nhân, Mỹ Hào, Hưng Yên
                 </div>
-                <div class="text-content">
-                    <div class="left-text">
+                
+                <div style=" margin: 10px 18px;">
+                    <div class="bor-title"></div>
+                    <div class="text-content">
+                        <div class="left-text">
                         <div>
-                            Hiệu trưởng: 
+                            Hiệu trưởng:  Reina Huyền Nguyễn
                         </div>
                         <div>
-                            Cô giáo dạy: 
+                            Cô giáo dạy: Cô Hằng
                         </div>
                         <div>
                             Môn: 
@@ -31,68 +34,67 @@
                     </div>
                     <div class="right-text">
                         <div>
-                            Phụ huynh: 
+                            Phụ huynh: Nguyễn Văn Quyết
                         </div>
                         <div>
-                            Tên bé: 
+                            Tên bé: Nguyễn Tuấn Kiệt
                         </div>
                         <div>
-                            Lớp: 
+                            Lớp: 3 tuổi
                         </div>
                     </div>
-                </div>
+                    </div>
+                    </div>
+                    
+                   
+              
                 <div class="form-anse">
                 <div class="ansew">
                     <div>
                         Câu 1: 
                     </div>
+                    <div>
+                        Bạn đánh giá về ngôi trường chất lượng dạy thế nào?
+                    </div>
                     <div class="common-radio">
-                        <div class="radio-c">
-                             <input type="radio" name="" id="">
-                             <label for="dewey">Hài lòng</label> 
-                        </div>
-                       <div class="radio-c">
-                           <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                       </div>
-                        <div class="radio-c">
-                            <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                        </div>
-                         <div class="radio-c">
-                             <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                         </div>
+                         <el-radio-group v-model="radio">
+                        <el-radio :label="3">Hài lòng</el-radio>
+                        <el-radio :label="6">Rất hài lòng</el-radio>
+                        <el-radio :label="9">Rất không hài lòng</el-radio>
+                        <el-radio :label="9">Không hài lòng</el-radio>
+                        <el-radio :label="9">Bình thường</el-radio>
+                        </el-radio-group>
                         
                         
+                    </div>
+                    <div>
+                        <input class="text-c" type="text" name="" id="">
+                    </div>
+                </div>
+                <div class="ansew">
+                    <div>
+                        Câu 2: 
+                    </div>
+                    <div>
+                        Bạn thấy đội ngũ giáo viên của trường có tốt không?
+                    </div>
+                    <div class="common-radio">
+                         <el-radio-group v-model="radio">
+                        <el-radio :label="3">Hài lòng</el-radio>
+                        <el-radio :label="6">Rất hài lòng</el-radio>
+                        <el-radio :label="9">Rất không hài lòng</el-radio>
+                        <el-radio :label="9">Không hài lòng</el-radio>
+                        <el-radio :label="9">Bình thường</el-radio>
+                        </el-radio-group>
+                        
+                        
+                    </div>
+                    <div>
+                        <input class="text-c" type="text" name="" id="" value="Rất tốt">
                     </div>
                 </div>
                 
-                 <div class="ansew">
-                    <div>
-                        Câu 1: 
-                    </div>
-                    <div class="common-radio">
-                        <div class="radio-c">
-                             <input type="radio" name="" id="">
-                             <label for="dewey">Hài lòng</label> 
-                        </div>
-                       <div class="radio-c">
-                           <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                       </div>
-                        <div class="radio-c">
-                            <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                        </div>
-                         <div class="radio-c">
-                             <input type="radio" name="" id=""> 
-                            <label for="dewey">Rất hài lòng</label>
-                         </div>
-                        
-                        
-                    </div>
-                </div>
+               
                 </div>
 
                 
@@ -144,19 +146,21 @@ export default {
     padding: 0px 13px;
 }
 .text-content{
+    overflow: hidden;
     display: grid;
+    border: 1px solid #ccc;
     grid-template-columns: 1fr 1fr;
     padding: 5px 8px;
-    border: 1px solid #acafcab0;
-    margin: 10px 39px;
-    border-radius: 5px;
     line-height: 23px;
+    background-color: #fff;
 }
 .ansew{
-   margin-left: auto;
-    margin-right: auto;
-    padding: 10px 38px;
+       padding: 13px 20px;
     margin-bottom: 10px;
+    background: #fff;
+    border-radius: 9px;
+    height: 102px;
+    font-size: 14px;
 }
 .radio-c{
  
@@ -174,7 +178,30 @@ export default {
 }
 .form-anse{
     height: 386px;
-    overflow-x: auto;
-    overflow-y: auto;
+     overflow-x: auto; 
+     overflow-y: auto; 
+    margin-right: auto;
+    margin-left: auto;
+    width: 95%;
+}
+
+.bor-title{
+background-color: rgb(103, 58, 183);
+    color: rgba(255, 255, 255, 1);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 10px;
+    left: -1px;
+    top: -1px;
+    width: calc(100% + 0px);
+}
+.text-c:focus{
+    outline: none;
+}
+.text-c{
+    width: 96%;
+    margin-top: 10px;
+    border: navajowhite;
+    border-bottom: 1px solid #ccc;
 }
 </style>

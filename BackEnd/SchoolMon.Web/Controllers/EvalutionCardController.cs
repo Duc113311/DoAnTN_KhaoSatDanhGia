@@ -20,9 +20,9 @@ namespace SchoolMon.Web.Controllers
         }
 
         [HttpPost("evalutionCard")]
-        public IActionResult InsetEvalutinCare([FromQuery] string evalutionName,[FromBody] string listEvalution)
+        public IActionResult InsetEvalutinCare([FromBody] EvaluParam evaluParam)
         {
-            var emtity = _evalutionCardService.InsertEvalutionCard(evalutionName, listEvalution);
+            var emtity = _evalutionCardService.InsertEvalutionCard(evaluParam.evalutionName, evaluParam.describe, evaluParam.listEvalution);
             return Ok(emtity);
         }
     }

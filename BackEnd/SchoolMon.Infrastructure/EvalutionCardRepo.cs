@@ -18,11 +18,12 @@ namespace SchoolMon.Infrastructure
 
         }
 
-        public List<EvalutionCard> InsertEvalutionCard(string evalutionName, string listEvalution)
+        public List<EvalutionCard> InsertEvalutionCard(string evalutionName,string describe, string listEvalution)
         {
             var param = new DynamicParameters();
             
             param.Add("@EvalutionName", evalutionName,  DbType.String);
+            param.Add("@Describe", describe, DbType.String);
             param.Add("@ListQuestion", listEvalution, DbType.String);
             var fees = _dbConnection.Query<EvalutionCard>("Proc_InsertEvalutionCard", param, commandType: CommandType.StoredProcedure).ToList();
             return fees;

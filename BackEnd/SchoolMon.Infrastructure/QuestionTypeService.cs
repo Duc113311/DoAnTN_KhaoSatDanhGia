@@ -15,5 +15,10 @@ namespace SchoolMon.Infrastructure
         {
 
         }
+
+        public int AddQuestionType(QuestionType questionType)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
