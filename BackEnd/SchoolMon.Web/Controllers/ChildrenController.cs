@@ -38,5 +38,12 @@ namespace SchoolMon.Web.Controllers
                 return StatusCode(204);
             }
         }
+
+        [HttpGet("GetAllChilEvalu")]
+        public IActionResult GetAllChilEvalutionChi()
+        {
+            var entities = _childrenService.GetAllChilEvalutionChil();
+            return Ok(entities);
+        }
     }
 }

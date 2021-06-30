@@ -18,41 +18,49 @@ namespace SchoolMon.Application.Entities
 
         public string listChil { get; set; }
 
+        public Guid ChildrenID { get; set; }
+
         public string ChildrenName { get; set; }
 
-        public string QuestionName { get; set; }
+        public string? QuestionName { get; set; }
 
-        public string ChildrenCode { get; set; }
+        public string? ChildrenCode { get; set; }
 
-        public string TeacherName { get; set; }
+        public string? TeacherName { get; set; }
 
-        public string ParentName { get; set; }
+        public string? ParentName { get; set; }
 
-        public string ClassName { get; set; }
+        public string? ClassName { get; set; }
 
-        public int QuestionSatus { get; set; }
+        public Guid ClassID { get; set; }
+
+
+
+        public int? QuestionSatus { get; set; }
 
         public int Satisfied { get; set; }
 
         /// <summary>
         /// Không hài lòng
         /// </summary>
-        public int Unsatisfied { get; set; }
+        public int? Unsatisfied { get; set; }
 
         /// <summary>
         /// Rẩ hài lòng
         /// </summary>
-        public int VerySatisfied { get; set; }
+        public int? VerySatisfied { get; set; }
 
         /// <summary>
         /// Rất không hài lòng
         /// </summary>
-        public int VeryUnsatisfied { get; set; }
+        public int? VeryUnsatisfied { get; set; }
 
         /// <summary>
         /// Bình thường
         /// </summary>
-        public int Normal { get; set; }
-        public string Paragraph { get; set; }
+        public int? Normal { get; set; }
+        public string? Paragraph { get; set; }
+
+        public List<EvalutionSubmit> questions { get; set; }
     }
 }

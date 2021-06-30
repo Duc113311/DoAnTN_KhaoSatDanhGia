@@ -13,7 +13,7 @@
                   </div>
                        <div class="alert-body"> Bạn có chắc chắn muốn xóa những bản ghi đã chọn? </div>
                         <div class="alert-footer"><button id="btnCancle" class="m-btn-close">Không</button>
-                        <button id="btnDelete" class="m-btn-delete">Xóa</button>
+                        <button id="btnDelete" class="m-btn-delete" @click="btDelete">Xóa</button>
                          </div>
             </div>
         </div>
@@ -28,11 +28,15 @@ export default {
 
         }
     },
-    props:["showremove"],
+    props:["showremove","removeDetail","question"],
     methods:{
         btClose(){
             this.$emit('btRemove',true)
+        },
+        btDelete(){
+            this.$emit('removeDetail',this.question.questionID)
         }
+        
     }
 
 }

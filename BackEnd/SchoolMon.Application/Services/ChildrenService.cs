@@ -21,6 +21,12 @@ namespace SchoolMon.Application.Services
         {
             _childrenRepo = childrenRepo;
         }
+
+        public IEnumerable<EvaluParam> GetAllChilEvalutionChil()
+        {
+            var values = _childrenRepo.GetAllChilEvalutionChil();
+            return values;
+        }
         #endregion
 
         #region fun

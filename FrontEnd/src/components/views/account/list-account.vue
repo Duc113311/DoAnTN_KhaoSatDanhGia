@@ -80,24 +80,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="style-row" >
+                            <tr class="style-row" v-for="(thongke,index) in thongkes" :key="index" >
                                 <td scope="row">
                                    
                                 </td>
                                 <td class="text-center">
-                                    
+                                    {{thongke.evalutionName}}
                                 </td>
                                 <td class="text-center">
-                                    
+                                    {{thongke.satisfied}}
                                 </td>
                                  <td class="text-center">
-                                    
+                                    {{thongke.unsatisfied}}
                                 </td>
                                  <td class="text-center">
-                                    
+                                    {{thongke.verySatisfied}}
                                 </td>
                                  <td class="text-center">
-                                    
+                                    {{thongke.veryUnsatisfied}}
+                                </td>
+                                  <td class="text-center">
+                                    {{thongke.normal}}
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-function">
@@ -126,6 +129,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import DetailAccount from "../account/detail-account.vue"
 export default {
     name:'ListAccount',
@@ -134,13 +138,28 @@ export default {
     },
     data(){
         return{
-            
+            thongkes:[]
         }
     },
     methods:{
-
+        async LoadData(){
+             await axios.get("https://localhost:44396/api/EvalutionSubmit/thongke").then((res)=>{
+                 res.data.map(item =>{
+                     var sum = item.satisfied + item.unsatisfied + item.verySatisfied + item.veryUnsatisfied + item.normal;
+                        item.satisfied=(item.satisfied/sum)*100;
+                        item.unsatisfied=(item.unsatisfied/sum)*100;
+                        item.verySatisfied=(item.verySatisfied/sum)*100;
+                        item.veryUnsatisfied=(item.veryUnsatisfied/sum)*100;
+                        item.normal=(item.normal/sum)*100;
+                 })
+                 this.thongkes = res.data;
+             })
+        }
        
-    }
+    },
+    created() {
+        this.LoadData();
+    },
 }
 </script>
 

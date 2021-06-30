@@ -25,7 +25,12 @@ namespace SchoolMon.Web.Controllers
             var emtity = _evalutionCardService.InsertEvalutionCard(evaluParam.evalutionName, evaluParam.describe, evaluParam.listEvalution);
             return Ok(emtity);
         }
+
+        [HttpDelete("evaluCard/{id}")]
+        public IActionResult DeleteCả(int id)
+        {
+            var serviceResult = _evalutionCardService.Delete(id);
+            return StatusCode(201, serviceResult);
+        }
     }
-
-
 }

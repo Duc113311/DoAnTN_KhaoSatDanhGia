@@ -20,6 +20,12 @@ namespace SchoolMon.Application.Services
             _evalutionSubmitRepo1 = evalutionSubmitRepo;
         }
 
+        public List<EvaluParam> FillterEvalChil(Guid classID, string childrenName)
+        {
+            var value = _evalutionSubmitRepo1.FillterEvalChil(classID,childrenName);
+            return value;
+        }
+
         public List<EvaluParam> GetAllEvalutiobSubmit()
         {
             var value = _evalutionSubmitRepo1.GetAllEvalutiobSubmit();
@@ -42,6 +48,20 @@ namespace SchoolMon.Application.Services
             var values = _evalutionSubmitRepo1.InsertEvalutionCard(EvalutionID, ListChildrenID);
             return values;
         }
+
+        public List<Thongke> Thongke()
+        {
+            var values = _evalutionSubmitRepo1.Thongke();
+            return values;
+        }
+
+        public bool UpdateEvaluChi(Guid evalutionID, List<Answer> aw)
+        {
+            var value = _evalutionSubmitRepo1.UpdateEvaluChi(evalutionID, aw);
+            return value;
+        }
+
+       
 
 
         #endregion

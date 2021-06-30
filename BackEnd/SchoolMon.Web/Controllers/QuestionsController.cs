@@ -32,5 +32,11 @@ namespace SchoolMon.Web.Controllers
             return StatusCode(201, result);
         }
 
+        [HttpGet("Filter")]
+        public IActionResult GetFilter([FromQuery] string a)
+        {
+            var entities = _questionService.GetFilter(a);
+            return Ok(entities);
+        }
     }
 }

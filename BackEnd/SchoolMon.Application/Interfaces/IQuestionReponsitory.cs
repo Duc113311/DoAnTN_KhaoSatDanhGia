@@ -21,5 +21,9 @@ namespace SchoolMon.Application.Interfaces
         /// <returns></returns>
         int DeleteAssets(string[] array);
 
+        List<Question> GetFilter(string spec);
+
+
+
     }
 }

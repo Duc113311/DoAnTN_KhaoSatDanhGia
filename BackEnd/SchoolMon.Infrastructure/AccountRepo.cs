@@ -29,16 +29,16 @@ namespace SchoolMon.Infrastructure
         return values;
     }
 
-        public int Login(string userName, string password)
+        public Account Login(string userName, string password)
         {
             var param = new DynamicParameters();
 
             param.Add("@UserName", userName, DbType.String);
             param.Add("@PassWork", password, DbType.String);
 
-            var values = _dbConnection.Query<Account>("Proc_Login", param, commandType: CommandType.StoredProcedure);
+            var values = _dbConnection.Query<Account>("Proc_Login", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
 
-            return values.Count();
+            return values;
         }
 
 

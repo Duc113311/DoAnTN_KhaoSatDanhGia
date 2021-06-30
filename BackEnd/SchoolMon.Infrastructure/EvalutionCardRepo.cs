@@ -29,6 +29,28 @@ namespace SchoolMon.Infrastructure
             return fees;
 
         }
+
+        public int Delete(int entityId)
+        {
+            var rowAffect = 0;
+            _dbConnection.Open();
+            using (var transaction = _dbConnection.BeginTransaction())
+            {
+                try
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add($@"{_tableName}Id", entityId, DbType.Guid);
+                    rowAffect = _dbConnection.Execute($"Proc_Delete{_tableName}s", parameters, transaction, commandType: CommandType.StoredProcedure);
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    transaction.Rollback();
+                }
+            }
+            return rowAffect;
+        }
     }
 
    

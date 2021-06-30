@@ -36,5 +36,12 @@ namespace SchoolMon.Infrastructure
             var entitie = _dbConnection.Query<Children>($"Proc_GetChildrenById", parameter, commandType: CommandType.StoredProcedure).ToList();
             return entitie;
         }
+
+        public IEnumerable<EvaluParam> GetAllChilEvalutionChil()
+        {
+            var entities = _dbConnection.Query<EvaluParam>("Proc_GetAllChilEvalutionChil", commandType: CommandType.StoredProcedure);
+
+            return entities;
+        }
     }
 }

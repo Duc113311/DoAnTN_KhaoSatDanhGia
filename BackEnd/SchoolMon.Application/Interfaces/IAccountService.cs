@@ -9,6 +9,6 @@ namespace SchoolMon.Application.Interfaces
 {
    public interface IAccountService:IBaseService<Account>
     {
-        int Login(string userName, string passWord);
+        Account Login(string userName, string passWord);
     }
 }

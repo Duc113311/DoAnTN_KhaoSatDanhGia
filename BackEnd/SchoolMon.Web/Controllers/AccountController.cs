@@ -24,14 +24,9 @@ namespace SchoolMon.Web.Controllers
         public IActionResult Login([FromQuery] string userName, [FromQuery] string passWord)
         {
             var value = _accountService.Login(userName, passWord);
-            if (value ==1)
-            {
-                return Ok(value);
-            }
-            else
-            {
-                return StatusCode(204);
-            }
+            
+            return Ok(value);
+          
         }
     }
 }

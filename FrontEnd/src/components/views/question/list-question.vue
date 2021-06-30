@@ -22,7 +22,7 @@
             </div>
             <div class="header-right-bt">
                 <button id="btn-Add" class="btn-add" @click="btCreate()">Thêm mới</button>
-                <button class="btn-delete" @click="btRemove()"></button>
+                <button class="btn-delete" @click="btRemoveAll()"></button>
             </div>
         </div>
         <div class="form-table">
@@ -40,7 +40,7 @@
                                 <th style="min-width: 250px;white-space: nowrap;">
                                     <label for="">Tên câu hỏi</label>
                                     <div class="input-search">
-                                        <input type="text" />
+                                        <input type="text"  v-model="filterText" @keyup.enter="btnfinter"/>
                                     </div>
                                 </th>
                                  <th style="min-width: 200px;white-space: nowrap;">
@@ -53,10 +53,7 @@
                                 <th class="text-center" style="min-width: 150px;white-space: nowrap;"> 
                                     <label for="">Ngày tạo</label>
                                 </th>
-                                <th class="text-center">
-                                    <label for="">Trạng thái</label>
-                                </th>
-                                
+                               
                                 <th class="text-center">
 
                                 </th>
@@ -64,33 +61,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="style-row" v-for="(item,index) in questions" :key="index">
+                            <tr class="style-row" v-for="(question,index) in questions" :key="index">
                                 <td scope="row">
-                                   <input type="checkbox" name="" id="">
+                                   <input @click="checkBoxInfo(question)" type="checkbox"
+                                    v-model="question.questionSatus" name="" id="">
                                 </td>
                                 <td class="text-center">
                                     {{index++}}
                                 </td>
                                  <td class="text-center">
-                                    {{item.questionName}}
+                                    {{question.questionName}}
                                 </td>
                                 <td class="text-center">
-                                    {{item.questionTypeName}}
+                                    {{question.questionTypeName}}
                                 </td>
                                  <td class="text-center">
-                                     {{item.createdDate}}
+                                     {{question.createdDate}}
                                 </td>
-                                 <td class="text-center">
-                                    <div :class="{'icon-check-tb':item.questionSatus}">
-
-                                    </div>
-                                </td>
+                                
                                
                                 <td class="text-center">
                                     <div class="btn-function">
-                                        <button class="btn-edit"></button>
+                                        <button class="btn-edit" @click="rowOnClick(question)"></button>
                                         <button class="btn-duplicate"></button>
-                                        <button class="btn-remove" ></button>
+                                        <button class="btn-remove" @click="btRemoveDetail(question)"></button>
                                     </div>
                                 </td>
                             </tr>
@@ -110,10 +104,16 @@
     <DetailQuestion 
         @btCreate="btCreate" 
         @close="btClose"
+     :fomatDialog="fomatDialog"
         :showDetail="showDetail"
+        :isUpdateTitle="isUpdateTitle"
+        :isAddTitle="isAddTitle"
         :question="question"
+        @loadData="loadData"
         :questionTypes="questionTypes"/>
-        <Remove @btRemove="btRemove" :showremove="showremove"/>
+        <Remove @btRemove="btRemove" :question="question" :showremove="showremove" @removeDetail="removeDetail"/>
+        <RemoveAll @deleteAllBox="deleteAllBox" @btRemoveAll="btRemoveAll" :showremoveAll="showremoveAll" />
+  
   </div>
 </template>
 
@@ -121,37 +121,128 @@
 import axios from "axios";
 import DetailQuestion from "../question/detail-question.vue"
 import Remove from "../../base/baseRemove.vue"
+import RemoveAll from "../../base/baseRemoveAll.vue"
 export default {
     name:'ListQuestion',
     components:{
         DetailQuestion,
-        Remove
+        Remove,
+        RemoveAll
     },
     data(){
         return{
+             isAddTitle:false,
+            isUpdateTitle:false,
             showDetail:true,
             showremove:true,
+            showremoveAll:true,
             questions:[],
+            fomatDialog:1,
             questionTypes:[],
-            question:{}
+            question:{
+                questionName:'',
+                questionTypeID:'',
+                createdDate:'',
+                describe:'',
+                satisfied:0,
+                questionSatus:0,
+                paragraph:''
+            },
+           
+            arrData:[]
         }
     },
     methods:{
-        
+        /**
+         * Lọc dữ liệu qua các ô text
+         * Trả về danh sách đối tượng tìm được
+         * Create by NVDuc(28/03/2021)
+         */
+        btnfinter(){
+            if(this.filterText!=""){
+                    axios.get("https://localhost:44396/api/Questions/Filter?a="+this.filterText).then(res=>{
+                this.questions = res.data;
+            })
+            }else{
+                this.loadData();
+            }
+        },
+       
         btRemove(value){
             this.showremove=value
         },
         btCreate(){
+            this.isAddTitle=false;
+             this.isUpdateTitle=true;
             this.showDetail=false
-             setTimeout(() => {
-                    this.$refs.dialog.$refs.questionName.focus();
-                     }, 0);
             this.question={}
+        },
+        rowOnClick(emp){
+            this.isUpdateTitle=false
+            this.isAddTitle=true;
+            this.showDetail=false
+            this.question=JSON.parse(JSON.stringify(emp))
+            console.log(emp)
         },
 
         btClose(value){
             this.showDetail=value
         },
+        btRemoveDetail(ept){
+             this.showremove=false;
+             this.question=JSON.parse(JSON.stringify(ept));
+             console.log('ádas',ept)
+        },
+
+        removeDetail(){
+            console.log('sadas',this.question.questionID)
+            axios.delete("https://localhost:44396/api/Questions/"+this.question.questionID)
+            .then(()=>{
+                 this.$notify({
+                        title: "Thông báo",
+                        message: "Xóa câu hỏi thành công",
+                        type: "success",
+                });
+                this.showremove=true;
+                this.loadData();
+            })
+        },
+         /**
+         * Kiểm tra dữ liệu được truyền vào ô CheckBox
+         * Chức năng xóa nhiều
+         * Create by NVDuc(28/03/2021)
+         */
+        checkBoxInfo(emp){
+            if(emp.questionSatus == 0 || emp.questionSatus == false)
+                this.arrData.push(emp.questionID);
+            else{
+                console.log(emp.questionID);
+                var index = this.arrData.findIndex(x => x === emp.questionID);
+                this.arrData.splice(index,1);
+            }
+        },
+         btRemoveAll(value){
+            this.showremoveAll=value;
+            
+        },
+        deleteAllBox(){
+            axios.delete("https://localhost:44396/api/Questions/DeleteAll/",
+            {
+              headers: {
+                Authorization: "authorizationToken",
+              },
+              data: this.arrData,
+            }).
+            then(() => {
+              console.log(this.arrData);
+                 this.$notify({
+                    title: "Thành công",
+                    message: "Thêm câu hỏi thành công",
+                    type: "success",
+                    });
+            });
+        },
+        
        
         async loadData(){
             await axios.get("https://localhost:44396/api/Questions").then((res)=>{

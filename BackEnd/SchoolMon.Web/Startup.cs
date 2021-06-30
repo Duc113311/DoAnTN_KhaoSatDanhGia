@@ -30,13 +30,13 @@ namespace SchoolMon.Web
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            //services.AddControllers();
             services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SchoolMon.Web", Version = "v1" });
             });
-
+            services.AddControllers().AddNewtonsoftJson();
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseReponsitory<>));
             services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
 

@@ -26,7 +26,7 @@
                             Hiệu trưởng:  Reina Huyền Nguyễn
                         </div>
                         <div>
-                            Cô giáo dạy: Cô Hằng
+                            Cô giáo dạy: {{evaluDetail.teacherName}}
                         </div>
                         <div>
                             Môn: 
@@ -37,10 +37,10 @@
                             Phụ huynh: Nguyễn Văn Quyết
                         </div>
                         <div>
-                            Tên bé: Nguyễn Tuấn Kiệt
+                            Tên bé: {{evaluDetail.childrenName}}
                         </div>
                         <div>
-                            Lớp: 3 tuổi
+                            Lớp: {{evaluDetail.className}}
                         </div>
                     </div>
                     </div>
@@ -49,50 +49,29 @@
                    
               
                 <div class="form-anse">
-                <div class="ansew">
+                <div class="ansew" v-for="(item,index) in evaluDetail.questions" :key="index">
                     <div>
-                        Câu 1: 
+                        Câu {{index+1}}:
                     </div>
                     <div>
-                        Bạn đánh giá về ngôi trường chất lượng dạy thế nào?
+                        {{item.questionName ? item.questionName : ''}}
                     </div>
                     <div class="common-radio">
-                         <el-radio-group v-model="radio">
-                        <el-radio :label="3">Hài lòng</el-radio>
-                        <el-radio :label="6">Rất hài lòng</el-radio>
-                        <el-radio :label="9">Rất không hài lòng</el-radio>
-                        <el-radio :label="9">Không hài lòng</el-radio>
-                        <el-radio :label="9">Bình thường</el-radio>
+                         <el-radio-group v-model="item.unsatisfied">
+                        <el-radio :label="1">Hài lòng</el-radio>
+                        <el-radio :label="2">Rất hài lòng</el-radio>
+                        <el-radio :label="3">Rất không hài lòng</el-radio>
+                        <el-radio :label="4">Không hài lòng</el-radio>
+                        <el-radio :label="5">Bình thường</el-radio>
                         </el-radio-group>
                         
                         
                     </div>
                     <div>
-                        <input class="text-c" type="text" name="" id="">
+                        <input v-model="item.paragraph" class="text-c" type="text" name="" id="">
                     </div>
                 </div>
-                <div class="ansew">
-                    <div>
-                        Câu 2: 
-                    </div>
-                    <div>
-                        Bạn thấy đội ngũ giáo viên của trường có tốt không?
-                    </div>
-                    <div class="common-radio">
-                         <el-radio-group v-model="radio">
-                        <el-radio :label="3">Hài lòng</el-radio>
-                        <el-radio :label="6">Rất hài lòng</el-radio>
-                        <el-radio :label="9">Rất không hài lòng</el-radio>
-                        <el-radio :label="9">Không hài lòng</el-radio>
-                        <el-radio :label="9">Bình thường</el-radio>
-                        </el-radio-group>
-                        
-                        
-                    </div>
-                    <div>
-                        <input class="text-c" type="text" name="" id="" value="Rất tốt">
-                    </div>
-                </div>
+                
                 
                
                 </div>
@@ -114,7 +93,7 @@
 export default {
   name:'DetailEvalution',
 
-  props:["isShowEvalution"],
+  props:["isShowEvalution","evaluDetail"],
 
   data(){
     return{

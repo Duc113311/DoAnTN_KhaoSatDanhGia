@@ -15,5 +15,12 @@ namespace SchoolMon.Application.Interfaces
 
         EvaluParam GetDetailEvaluSubmit(Guid entityId);
 
+        bool UpdateEvaluChi(Guid evalutionID, List<Answer> aw);
+
+        List<Thongke> Thongke();
+
+        List<EvaluParam> FillterEvalChil(Guid classID, string childrenName);
+
+
     }
 }

@@ -207,7 +207,7 @@ export default {
       console.log("hello");
     },
     btback(){
-      this.go(-1)
+      this.$router.go(-1)
     },
    async btSave() {
       const me=this;

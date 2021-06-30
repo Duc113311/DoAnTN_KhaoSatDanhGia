@@ -26,7 +26,7 @@
                   <div class="form-option">
                       <div class="category" @click="btStudent">
                           <div class="logo1"></div>
-                          <label class="textLogo" for="">Học sinh</label>
+                          <label class="textLogo" for="">Phụ Huynh</label>
                       </div>
                       <div class="category " @click="btTeacher">
                           <div class="logo2"></div>
@@ -45,24 +45,51 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     name:'Generality',
     data(){
         return{
             options: [{
           value: 'CS1.Trường mầm non Happy Monstessori',
-          label: 'CS1.Trường mầm non Happy Monstessori'
-        },
-            
-            ]}
+          label: 'CS1.Trường mầm non Happy Monstessori'},  
+            ],
+            accounts:[]
+            }
     },
     methods:{
         btStudent(){
-            this.$router.push("/hocsinhrep");
+            this.account=JSON.parse(localStorage.getItem('account'));
+            console.log(this.account);
+            if(this.account.role === 2){
+                this.$router.push("/hocsinhrep");
+            }else if(this.account.role !== 2){
+                    this.$router.push("/hocsinhrep");
+            }
         },
         btTeacher(){
-            this.$router.push("/danhmuc")
+            this.account=JSON.parse(localStorage.getItem('account'));
+            console.log(this.account);
+            if(this.account.role === 1){
+                this.$router.push("/danhmuc")
+            }else{
+                this.$notify.error({
+                    title: 'Cảnh báo',
+                    message: 'Bạn không có quyền truy cập',
+                    type: 'warning'
+                    });
+                
+            }
+        },
+        
+        async LoadAccont(){
+             await axios.get("https://localhost:44396/api/Account").then((res) => {
+            this.accounts = res.data;
+            });
         }
+    },
+    created(){
+        this.LoadAccont();
     }
 
 }

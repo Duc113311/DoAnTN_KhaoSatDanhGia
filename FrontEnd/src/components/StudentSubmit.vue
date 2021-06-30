@@ -21,9 +21,11 @@
             <label for="">Liên hệ: <i>0961.348.219/0221.3768.386</i></label>
             <label for="">Email: happymon247@gmail.com</label>
           </div>
-          <el-col :span="8" class="back">
-            <el-card shadow="hover"> 
-            <i class="el-icon-back"></i> <b>Quay lại</b>  
+          <el-col :span="8" class="back" >
+            <el-card shadow="hover" >
+              <div @click="onback">
+                <i class="el-icon-back"></i> <b>Quay lại</b>
+              </div>
             </el-card>
           </el-col>
         </div>
@@ -32,14 +34,22 @@
             <div style="margin-top: 15px">
               <el-input
                 placeholder="Nhập từ khóa"
-                v-model="input3"
+                 @change="onclickFilter()"
+                v-model="classChil.querytext"
                 class="input-with-select"
               >
                 <template #prepend>
-                  <el-select v-model="select" placeholder="Chọn lớp" style="width: 200px">
-                    <el-option label="Restaurant" value="1"></el-option>
-                    <el-option label="Order No." value="2"></el-option>
-                    <el-option label="Tel" value="3"></el-option>
+                  <el-select 
+                  @change="onclickFilter()"
+                  v-model="classChil.classID" 
+                  placeholder="Chọn lớp" 
+                  style="width: 200px">
+                    <el-option 
+                    v-for="classChil in classChils"
+                    :key="classChil.classID"
+                    :label="classChil.className"
+                     :value="classChil.classID"></el-option>
+                    
                   </el-select>
                 </template>
                 <template #append>
@@ -48,97 +58,113 @@
               </el-input>
             </div>
           </div>
-          <div class="s-content">
+          <div class="s-content" style="height: 641px;
+    overflow: scroll;">
             <div class="item-list">
-              <template>
-                <el-card class="box-card">
-                  <template #header>
-                    <div class="card-header">
-                      <span style="width: 100px">MS001 - Tuấn Kiệt</span>
-                      <el-button style="margin-left: 80px" class="button" type="text">
-                        <i class="el-icon-view"></i>
-                      </el-button>
+              <div
+                v-for="chillEvaluSubmit in chillEvaluSubmits"
+                :key="chillEvaluSubmit.childrenID"
+              >
+                <template>
+                  <el-card class="box-card">
+                    <template #header>
+                      <div class="card-header">
+                        <div class="e-left" style="width: 170px;">
+                        <span style="width: 100px"><b>Phụ huynh:</b></span><br>
+                        <span style="width: 100px">{{chillEvaluSubmit.childrenCode}}-{{chillEvaluSubmit.childrenName}}</span>
+                        </div>
+                        <div class="e-right">
+                          <el-button style="margin-left: 42px" class="button" type="text" @click="viewEvaluChil(chillEvaluSubmit.evalutionId)">
+                          <i class="el-icon-view"></i>
+                        </el-button>
+                        </div>
+                       
+                        
+                      </div>
+                    </template>
+                    <div>
+                      <label for=""> {{chillEvaluSubmit.evalutionName}}</label>
                     </div>
-                  </template>
-                  <div>
-                    <label for=""> Phiếu đánh giá ngày hội thiếu nhi...</label>
-                  </div>
-                </el-card>
-              </template>
-              <template>
-                <el-card class="box-card">
-                  <template #header>
-                    <div class="card-header">
-                      <span style="width: 100px">MS002 - Minh Châu</span>
-                      <el-button style="margin-left: 80px" class="button" type="text">
-                        <i class="el-icon-view"></i>
-                      </el-button>
-                    </div>
-                  </template>
-                  <div>
-                    <label for="">Phiếu đánh giá chất lượng đầu vào...</label>
-                  </div>
-                </el-card>
-              </template>
-              <template>
-                <el-card class="box-card">
-                  <template #header>
-                    <div class="card-header">
-                      <span style="width: 100px">MS003 - Hồng Quân</span>
-                      <el-button style="margin-left: 80px" class="button" type="text">
-                        <i class="el-icon-view"></i>
-                      </el-button>
-                    </div>
-                  </template>
-                  <div>
-                    <label for="">Phiếu đánh giá</label>
-                  </div>
-                </el-card>
-              </template>
-              <template>
-                <el-card class="box-card">
-                  <template #header>
-                    <div class="card-header">
-                      <span style="width: 100px">MS004 - Tuấn Khải</span>
-                      <el-button style="margin-left: 90px" class="button" type="text">
-                        <i class="el-icon-view"></i>
-                      </el-button>
-                    </div>
-                  </template>
-                  <div>
-                    <label for="">Phiếu đánh giá</label>
-                  </div>
-                </el-card>
-              </template>
-              <template>
-                <el-card class="box-card">
-                  <template #header>
-                    <div class="card-header">
-                      <span style="width: 100px">MS005 - Minh Nguyệt</span>
-                      <el-button style="margin-left: 70px" class="button" type="text">
-                        <i class="el-icon-view"></i>
-                      </el-button>
-                    </div>
-                  </template>
-                  <div>
-                    <label for="">Phiếu đánh giá</label>
-                  </div>
-                </el-card>
-              </template>
+                  </el-card>
+                </template>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <BaseEvalSubmi 
+    :isShowEvaluChi="isShowEvaluChi"
+    :chillEvaluSubmit="chillEvaluSubmit"
+    ></BaseEvalSubmi>
   </div>
 </template>
 
 <script>
+import BaseEvalSubmi from './base/baseEvuluSubmit.vue'
+import axios from "axios";
 export default {
-  data() {
-    return {};
+  components:{
+    BaseEvalSubmi
   },
-  methods: {},
+  data() {
+    return {
+      chillEvaluSubmits: [],
+      isShowEvaluChi:true,
+      chillEvaluSubmit:{},
+      classChils:[],
+      classChil:{}
+    };
+  },
+  methods: {
+    async loadAllChiSubmit() {
+      await axios
+        .get("https://localhost:44396/api/EvalutionSubmit/getAllSub")
+        .then((res) => {
+          this.chillEvaluSubmits = res.data;
+        });
+    },
+    viewEvaluChil(value){
+      this.isShowEvaluChi=false
+      var me=this;
+
+       axios.get("https://localhost:44396/api/EvalutionSubmit/IdEvaluSub?id="+value).then((res) => {
+        me.chillEvaluSubmit = res.data;
+            });
+    },
+
+    async loadDataChil(){
+       await axios
+        .get("https://localhost:44396/api/ClassChildren")
+        .then((res) => {
+          this.classChils = res.data;
+        });
+    },
+
+    onclickFilter(){
+      console.log(this.classChil.classID)
+      console.log(this.classChil.querytext)
+
+      var param=
+        `classID=${this.classChil.classID}` + 
+        `&childrenName=${this.classChil?.querytext}`;
+      
+       axios.get("https://localhost:44396/api/EvalutionSubmit/AllChil?"+param)
+        .then((res) => {
+          this.chillEvaluSubmits = res.data;
+          console.log(res.data);
+        });
+    },
+
+    onback(){
+      this.$router.go(-1);
+    }
+  },
+  mounted() {
+    this.loadAllChiSubmit();
+    this.loadDataChil();
+  },
 };
 </script>
 
@@ -167,7 +193,7 @@ export default {
 }
 .s-title,
 .s-content {
-  padding: 13px 30px;
+  padding: 13px 23px;
 }
 .item-list {
   display: grid;
@@ -185,10 +211,13 @@ export default {
   line-height: 32px;
 }
 
-.back{
-    position: absolute;
-    width: 150px;
-    padding: 10px;
-    bottom: 0;
+.back {
+  position: absolute;
+  width: 150px;
+  padding: 10px;
+  bottom: 0;
+}
+.card-header{
+  display: flex;
 }
 </style>

@@ -146,6 +146,7 @@
 </template>
 
 <script>
+
 import DetailChildren from "../childrent/detail-childrent.vue"
 import Remove from "../../base/baseRemove.vue"
 export default {
@@ -171,6 +172,9 @@ export default {
         btClose(value){
             this.showDetail=value
         }
+       
+
+        
     }
 }
 </script>

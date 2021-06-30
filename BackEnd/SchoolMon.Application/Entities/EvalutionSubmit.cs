@@ -14,6 +14,8 @@ namespace SchoolMon.Application.Entities
 
         public Guid? EvalutionID { get; set; }
 
+        public Guid? QuestionID { get; set; }
+
         public int EvalutionCardID { get; set; }
 
         public string ChildrenName { get; set; }

@@ -13,5 +13,7 @@ namespace SchoolMon.Application.Interfaces
 
         IEnumerable<Children> GetChildrenById(Guid childrenId);
 
+        IEnumerable<EvaluParam> GetAllChilEvalutionChil();
+
     }
 }

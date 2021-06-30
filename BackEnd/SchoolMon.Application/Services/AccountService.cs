@@ -24,7 +24,7 @@ namespace SchoolMon.Application.Services
 
         #region fun
 
-        public int Login(string userName, string passWord)
+        public Account Login(string userName, string passWord)
         {
             var value = _accountRepo.Login(userName, passWord);
             return value;

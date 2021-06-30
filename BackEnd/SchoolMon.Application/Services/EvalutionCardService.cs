@@ -20,6 +20,12 @@ namespace SchoolMon.Application.Services
             _evalutionCardRepository = evalutionCardRepository;
         }
 
+        public int Delete(int entityId)
+        {
+            var value = _evalutionCardRepository.Delete(entityId);
+            return value;
+        }
+
         #endregion
 
         #region fun
@@ -28,6 +34,8 @@ namespace SchoolMon.Application.Services
             var values = _evalutionCardRepository.InsertEvalutionCard(evalutionName, describe, listevalution);
             return values;
         }
+
+
         #endregion
 
     }

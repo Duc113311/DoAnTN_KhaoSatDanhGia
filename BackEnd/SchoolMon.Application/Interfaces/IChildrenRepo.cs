@@ -12,5 +12,9 @@ namespace SchoolMon.Application.Interfaces
         List<Children> GetFilter(string childrenName, string className);
 
         IEnumerable<Children> GetChildrenById(Guid childrenId);
+
+
+        IEnumerable<EvaluParam> GetAllChilEvalutionChil();
+
     }
 }

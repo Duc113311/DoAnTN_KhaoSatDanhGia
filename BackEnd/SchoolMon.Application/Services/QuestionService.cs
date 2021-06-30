@@ -48,5 +48,11 @@ namespace SchoolMon.Application.Services
                 return _serviceResult;
             }
         }
+
+        public List<Question> GetFilter(string spec)
+        {
+            var values = _questionReponsitory.GetFilter(spec);
+            return values;
+        }
     }
 }

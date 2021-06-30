@@ -63,31 +63,32 @@
                 <tbody>
                   <tr
                     class="style-row"
-                    v-for="(i, index) in evalutionCards"
-                    :key="i.index"
+                    v-for="(evalutionCard, index) in evalutionCards"
+                    :key="evalutionCard.index"
                   >
                     <td scope="row"></td>
                     <td scope="row">
                       {{ index }}
                     </td>
                     <td class="text-center">
-                      {{ i.evalutionName }}
+                      {{ evalutionCard.evalutionName }}
                     </td>
                     <td class="text-center">
-                      {{ i.questionName }}
+                      {{ evalutionCard.questionName }}
                     </td>
                     <td class="text-center">
-                        {{i.createdDate}}
+                      {{ evalutionCard.createdDate }}
                     </td>
-                    <td class="text-center">
-                       
-                    </td>
+                    <td class="text-center"></td>
 
                     <td class="text-center">
                       <div class="btn-function">
-                        <button class="btn-edit"></button>
+                        <button class="btn-edit" @click="btEdit(evalutionCard)"></button>
                         <button class="btn-duplicate"></button>
-                        <button class="btn-remove"></button>
+                        <button
+                          class="btn-remove"
+                          @click="btDelete(evalutionCard)"
+                        ></button>
                       </div>
                     </td>
                   </tr>
@@ -101,45 +102,81 @@
         </div>
       </div>
     </div>
-
+    <RemoveEvalu 
+    @removeDetailEvla="removeDetailEvla"
+    @btCloseEvalu="btCloseEvalu"
+    :evalutionCard="evalutionCard"
+    :showremoveEval="showremoveEval"></RemoveEvalu>
+    <Detaileval @loadEvalutionCard="loadEvalutionCard" :evalutionCard="evalutionCard" :ishowDetailType="ishowDetailType" @btClose="btClose"></Detaileval>
     <Remove @btRemove="btRemove" :showremove="showremove" />
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import RemoveEvalu from "../../base/baseRemoveEval.vue"
+import Detaileval from "../repost/detailEva.vue";
 import Remove from "../../base/baseRemove.vue";
 export default {
   name: "ListEvalutionCreate",
   components: {
     Remove,
+    Detaileval,
+    RemoveEvalu
   },
   data() {
     return {
       evalutionCards: [],
+      evalutionCard: {},
       showremove: true,
+      showremoveEval:true,
+      ishowDetailType: true,
     };
   },
   methods: {
     btRemove(value) {
       this.showremove = value;
     },
+
+    btCloseEvalu(value){
+      this.showremoveEval=value;
+    },
+    btClose(value) {
+      this.ishowDetailType = value;
+    },
+
     btCreate() {
       this.$router.push("/chitietphieu");
     },
+    btEdit(value) {
+      this.ishowDetailType = false;
+      this.evalutionCard = JSON.parse(JSON.stringify(value));
+      return value;
+    },
 
+    btDelete(value) {
+       this.showremoveEval = false;
+       this.evalutionCard=JSON.parse(JSON.stringify(value));
+             console.log('ádas',value)
+    },
+
+    removeDetailEvla(){
+            console.log('sadas',this.evalutionCard.evalutionCardID)
+            axios.delete("https://localhost:44396/api/EvalutionCard/evaluCard/"+this.evalutionCard.evalutionCardID)
+            .then(()=>{
+                 this.$notify({
+                        title: "Thông báo",
+                        message: "Xóa câu hỏi thành công",
+                        type: "success",
+                });
+                this.showremoveEval=true;
+                this.loadEvalutionCard();
+            })
+        },
+    
     async loadEvalutionCard() {
       await axios.get("https://localhost:44396/api/EvalutionCard").then((res) => {
         this.evalutionCards = res.data;
-       const loading = this.$loading({
-          lock: true,
-          text: 'Loading',
-          spinner: 'el-icon-loading',
-          background: 'rgba(0, 0, 0, 0.7)'
-        });
-        setTimeout(() => {
-          loading.close();
-        }, 2000)
       });
     },
   },

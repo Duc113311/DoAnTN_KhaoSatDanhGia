@@ -92,7 +92,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="style-row" v-for="i in evalutionSubmit" :key="i.evalutionSubmitID">
+                            <tr class="style-row" v-for="i in evalutionSubmit" :key="i.evalutionId">
                                 <td scope="row">
                                    <input type="checkbox" name="" id="">
                                 </td>
@@ -116,7 +116,7 @@
                                 </td>
                                  <td class="text-center view">
                                
-                                        <i @click="btViewEvalution()" class="el-icon-view"></i>
+                                        <i @click="btViewEvalution(i.evalutionId)" class="el-icon-view"></i>
                                   
                                 </td>
                             </tr>
@@ -137,7 +137,10 @@
   <DetailEvalution 
     @btViewEvalution="btViewEvalution"
      @close="btclose"
-     :isShowEvalution="isShowEvalution"/>
+     :evaluDetail="evaluDetail"
+     
+     :isShowEvalution="isShowEvalution"
+     />
   </div>
 </template>
 
@@ -153,13 +156,18 @@ export default {
         
         return{
             isShowEvalution:true,
-            evalutionSubmit:[]
+            evalutionSubmit:[],
+            evaluDetail:{}
         }
     },
     methods:{
-        btViewEvalution(){
+       async btViewEvalution(value){
             var me=this;
             me.isShowEvalution=false
+            await axios.get("https://localhost:44396/api/EvalutionSubmit/IdEvaluSub?id="+value).then((res) => {
+        this.evaluDetail = res.data;
+            });
+
         },
         btclose(value){
             this.isShowEvalution=value
@@ -168,8 +176,10 @@ export default {
         async loadEvalutionSubmit(){
             await axios.get("https://localhost:44396/api/EvalutionSubmit/getAllSub").then((res) => {
         this.evalutionSubmit = res.data;
-            });
-        }
+        
+        
+        })
+    }
     },
 
     created(){

@@ -6,24 +6,33 @@
         <input type="radio" name="login" checked="checked" id="signin" />
         <label for="signin">ĐĂNG NHẬP</label>
         <div class="login-content-body">
-          <input
-            type="text"
-            class="userName"
-            placeholder="Nhập tên tài khoản"
-           
-          />
-          <input
-            type="password"
-            class="passWord"
+        <!-- Model -->
+         <el-form :model="ruleForm" status-icon :rules="rules" 
+         ref="ruleForm"  class="demo-ruleForm">
+         <!-- Nhập tên tài khoản -->
+            <el-form-item prop="name">
+              <el-input v-model="ruleForm.name"
+              placeholder="Nhập tên tài khoản"
+              ></el-input>
+            </el-form-item>
+            <!-- Nhập password -->
+           <el-form-item prop="pass">
+            <el-input type="password" 
             placeholder="Nhập mật khẩu"
+            v-model="ruleForm.pass" autocomplete="off"></el-input>
+          </el-form-item>
            
-          />
-          <button class="btn-xl accept" @click="btnSignIn">ĐĂNG NHẬP</button>
+            <el-form-item>
+              <el-button type="primary" @click="submitForm('ruleForm')">Đăng nhập</el-button>
+              <el-button @click="resetForm('ruleForm')">Load</el-button>
+            </el-form-item>
+          </el-form>
         </div>
 
         <input type="radio" name="login" id="signup" />
         <label for="signup">ĐĂNG KÝ</label>
         <div class="login-content-body">
+          
           <input
             type="text"
             class="userName"
@@ -55,22 +64,65 @@ import axios from "axios";
 export default {
      name: "Login",
      data(){
+         var validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('Nhập mật khẩu'));
+        } else {
+          if (this.ruleForm.checkPass !== '') {
+            this.$refs.ruleForm.validateField('checkPass');
+          }
+          callback();
+        }
+      };
          return{
-           account:{}
-         }
+           account:{},
+          ruleForm: {
+          pass:'',
+         name: '',
+        },
+        rules: {
+         name: [
+            { required: true, message: 'Nhập tên tài khoản', trigger: 'blur' },
+            { min: 3,  message: 'Ký tự từ 3', trigger: 'blur' }
+          ],
+          pass: [
+            { validator: validatePass, trigger: 'blur' }
+          ],
+         
+          
+        }}
      },
       methods: {
-        btnSignIn() {
-          const param=`userName=${this.account.userName}`+ `&passWord=${this.account.passWord}`
+
+
+        // Đăng nhập
+        submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+             const param=`userName=${this.ruleForm.name}`+ `&passWord=${this.ruleForm.pass}`
           axios.get("https://localhost:44396/api/Account/filter?"+ param).then((result)=>{
-            this.account=result.data;
+            if(result.data && result){
+                this.$router.push("/generality");
+                var dataT=JSON.stringify(result.data);
+                localStorage.setItem('account',dataT);
+                
+              }else{
+                 this.$notify.error({
+                   title: 'Cảnh báo',
+                  message: 'Sai tài khoản hoặc mật khẩu',
+                  type: 'warning'
+                });
+              }
           });
-          if(this.account !=null){
-            this.$router.push("/generality");
-          }else{
-            console.log("Sai tài khoản mật khẩu")
+          } else {
+            console.log('error submit!!');
+            return false;
           }
-        },
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      }
   },
 }
 </script>

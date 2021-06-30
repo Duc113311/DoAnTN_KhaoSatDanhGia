@@ -46,5 +46,27 @@ namespace SchoolMon.Web.Controllers
                 return StatusCode(204);
             }
         }
+
+        [HttpPut("updaEvaChi")]
+        public IActionResult UpdateEvaluChi([FromQuery] Guid evalutionID, [FromBody] List<Answer> aw)
+        {
+            var entity = _evalutionSubmitService.UpdateEvaluChi(evalutionID, aw);
+            return Ok(entity);
+        }
+
+        [HttpGet("thongke")]
+        public IActionResult thongke()
+        {
+            var entity = _evalutionSubmitService.Thongke();
+            return Ok(entity);
+        }
+
+        [HttpGet("AllChil")]
+        public IActionResult FillterAllEvChi([FromQuery] Guid classID,[FromQuery] string childrenName)
+        {
+            var entity = _evalutionSubmitService.FillterEvalChil(classID,childrenName);
+            return Ok(entity);
+        }
     }
 }
+

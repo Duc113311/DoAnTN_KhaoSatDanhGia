@@ -10,5 +10,7 @@ namespace SchoolMon.Application.Interfaces
    public interface IQuestionTypeRepo:IBaseRepository<QuestionType>
     {
         int AddQuestionType(QuestionType questionType);
+
+
     }
 }

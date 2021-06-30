@@ -11,5 +11,6 @@ namespace SchoolMon.Application.Interfaces
     {
         List<EvalutionCard> InsertEvalutionCard(string EvalutionName,string Describe, string listEvalution);
 
+        int Delete(int entityId);
     }
 }

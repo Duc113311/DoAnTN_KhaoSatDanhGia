@@ -9,7 +9,7 @@ namespace SchoolMon.Application.Interfaces
 {
    public interface IAccountRepo:IBaseRepository<Account>
     {
-        int Login(string userName, string password);
+        Account Login(string userName, string password);
 
     }
 }

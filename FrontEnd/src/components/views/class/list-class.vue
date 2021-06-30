@@ -16,14 +16,7 @@
         </div>
         <div class="content-function">
             <div class="header-left-bt">
-                 <el-select v-model="value" placeholder="Select">
-                    <el-option
-                    v-for="item in options"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
-                    </el-option>
-                </el-select>
+                
             </div>
             <div class="header-right-bt">
                 
@@ -75,58 +68,44 @@
                                
                                 <th style="min-width: 112px;
                                 white-space: nowrap;">
-                                    <label for="">Ngày đánh giá</label>
+                                    <label for="">Trạng thái</label>
                                     <div class="input-search">
 
                                         <input type="text"/>
                                     </div>
                                 </th>
-                                <th style="min-width: 100px;
-                                white-space: nowrap;">
-                                    <label for="">Trạng thái</label>
-                                    <div class="input-search">
-                                    </div>
-                                </th>
-                                <th class="text-center">
-
-                                </th>
+                               
+                               
 
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="style-row" >
+                            <tr class="style-row" v-for="(item,index) in evalutionSubmit" :key="item.index">
                                 <td scope="row">
-                                   
+                                   <input type="checkbox" name="" id="">
+                                </td>
+                                <td scope="row">
+                                   {{index}}
                                 </td>
                                 <td class="text-center">
-                                    
+                                    {{item.evalutionName}}
                                 </td>
                                  <td class="text-center">
-                                    
+                                    {{item.childrenName}}
                                 </td>
                                 <td class="text-center">
-                                    
+                                    {{item.className}}
                                 </td>
                                  <td class="text-center">
-                                    
+                                    {{item.teacherName}}
                                 </td>
                                 <td class="text-center">
-                                    
-                                </td>
-                                 <td class="text-center">
-                                    
-                                </td>
-                                <td class="text-center">
-                                    
-                                     
-                                </td>
-                                <td class="text-center">
-                                    <div class="btn-function">
-                                        <button class="btn-edit"></button>
-                                        <button class="btn-duplicate"></button>
-                                        <button class="btn-remove" ></button>
+                                    <div :class="{'icon-check-tb':item.questionSatus}">
+
                                     </div>
                                 </td>
+                               
+                               
                             </tr>
                         </tbody>
                     </table>
@@ -145,11 +124,12 @@
     @btCreate="btCreate"
     :showDetail="showDetail"
     @btClose="btClose" />
-        <Remove @btRemove="btRemove" :showremove="showremove"/>
+    <Remove @btRemove="btRemove" :showremove="showremove"/>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import DetailClassEvalution from "../class/detail-class-evalution.vue"
 import Remove from "../../base/baseRemove.vue"
 export default {
@@ -162,7 +142,8 @@ export default {
         return{
             showDetail:true,
             showremove:true,
-            array: []
+            array: [],
+            evalutionSubmit:[]
         }
     },
     methods:{
@@ -180,7 +161,16 @@ export default {
         },
         btClose(value){
             this.showDetail=value
+        },
+
+        async loadEvalutionSubmit(){
+            await axios.get("https://localhost:44396/api/EvalutionSubmit/getAllSub").then((res) => {
+        this.evalutionSubmit = res.data;
+            });
         }
+    },
+    created(){
+        this.loadEvalutionSubmit()
     }
 }
 </script>
