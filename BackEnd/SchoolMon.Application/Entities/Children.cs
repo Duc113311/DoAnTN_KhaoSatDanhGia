@@ -14,6 +14,8 @@ namespace SchoolMon.Application.Entities
 
         public string ChildrenName { get; set; }
 
+        public string ChildrenCode { get; set; }
+
         public int ChildrenAge { get; set; }
 
         public string NickName { get; set; }

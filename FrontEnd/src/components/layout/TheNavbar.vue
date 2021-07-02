@@ -28,20 +28,23 @@
             </router-link>
             <router-link to="/baocao" class="nav-item">
                 <div class="nav-item-icon nav-revenue"></div>
-                <div class="nav-item-text">Quản lý phiếu tạo mới</div>
+                <div class="nav-item-text">Phiếu tạo mới</div>
             </router-link>
             <router-link to="/lophoc" class="nav-item">
                 <div class="nav-item-icon nav-bill"></div>
-                <div class="nav-item-text">Quản lý Giao phiếu</div>
+                <div class="nav-item-text">Phiếu giao</div>
              </router-link>
               <router-link to="/tre" class="nav-item">
                 <div class="nav-item-icon nav-num-revenue"></div>
                 <div class="nav-item-text">Quản lý trẻ</div>
               </router-link>
-             <router-link to="/taikhoan" class="nav-item">
-                <div class="nav-item-icon nav-message"></div>
-                <div class="nav-item-text">Quản lý tài khoản</div>
-             </router-link>
+             <el-col :span="8" class="back" >
+            <el-card shadow="hover" >
+              <div @click="onback()">
+                <i class="el-icon-back"></i> <b>Quay lại</b>
+              </div>
+            </el-card>
+          </el-col>
         </div>
 
     </div>
@@ -53,6 +56,9 @@ export default {
     name:'Navbar',
     data() {
         return {
+            onback(){
+                this.$router.push('/generality');
+                }
         }
     },
     methods:{
@@ -61,5 +67,10 @@ export default {
 }
 </script>
 <style lang="css" scoped>
-
+.back {
+  position: absolute;
+  width: 220px;
+  padding: 3px;
+  bottom: 0;
+}
 </style>

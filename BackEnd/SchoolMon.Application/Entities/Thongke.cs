@@ -11,25 +11,25 @@ namespace SchoolMon.Application.Entities
         public Guid evalutionId { get; set; }
 
         public string evalutionName { get; set; }
-        public int Satisfied1 { get; set; }
+        public int satisfied1 { get; set; }
 
         /// <summary>
         /// Không hài lòng
         /// </summary>
-        public int Unsatisfied1 { get; set; }
+        public int unsatisfied1 { get; set; }
 
         /// <summary>
         /// Rẩ hài lòng
         /// </summary>
-        public int VerySatisfied1 { get; set; } 
+        public int verySatisfied1 { get; set; } 
 
         /// <summary>
         /// Rất không hài lòng
         /// </summary>
-        public int VeryUnsatisfied1 { get; set; }
+        public int veryUnsatisfied1 { get; set; }
         /// <summary>
         /// Bình thường
         /// </summary>
-        public int Normal1 { get; set; }
+        public int normal1 { get; set; }
     }
 }

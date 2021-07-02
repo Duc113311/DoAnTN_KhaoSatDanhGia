@@ -35,27 +35,27 @@
                                 <th>
                                     <label for="">STT</label>
                                 </th>
-                                <th style="min-width: 190px;white-space: nowrap;">
+                                <th style="min-width: 210px;white-space: nowrap;">
                                     <label for="">Tên trẻ</label>
                                     <div class="input-search">
                                         <input type="text" />
                                     </div>
                                 </th>
-                                 <th style="min-width: 190px;white-space: nowrap;">
-                                    <label for="">Phụ huynh</label>
+                                 <th style="min-width: 100px;white-space: nowrap;">
+                                    <label for="">Biệt danh</label>
                                     <div class="input-search">
                                         <input type="text" />
                                     </div>
                                 </th>
                                 <th style="min-width: 150px;
                                 white-space: nowrap;">
-                                    <label for="">Biệt danh</label>
+                                    <label for="">Phụ huynh</label>
                                     <div class="input-search">
 
                                         <input type="text"/>
                                     </div>
                                 </th>
-                                <th style="min-width: 112px;
+                                <th style="min-width: 20px;
                                 white-space: nowrap;">
                                     <label for="">Độ tuổi</label>
                                     <div class="input-search">
@@ -71,22 +71,12 @@
                                         <input type="text"/>
                                     </div>
                                 </th>
-                                <th style="min-width: 242px;
-                                white-space: nowrap;">
-                                    <label for="">Sở thích</label>
-                                    <div class="input-search">
-
-                                        <input type="text"/>
-                                    </div>
-                                </th>
+              
                                 <th class="text-center" style="min-width: 117px;
                                 white-space: nowrap;">
                                     <label for="">Ngày nhập học</label>
                                 </th>
-                                <th class="text-center">
-                                    <label for="">Trạng thái</label>
-                                </th>
-                                
+                            
                                 <th class="text-center">
 
                                 </th>
@@ -94,34 +84,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="style-row" >
+                            <tr class="style-row" v-for="(chilCla,index) in chilClass" :key="index">
                                 <td scope="row">
-                                   
+                                   <input  type="checkbox">
+                                </td>
+                                <td scope="row">
+                                   {{index+1}}
                                 </td>
                                 <td class="text-center">
-                                    
+                                    {{chilCla.childrenName}}
                                 </td>
                                  <td class="text-center">
-                                    
+                                     {{chilCla.nickName}}
                                 </td>
                                 <td class="text-center">
-                                    
+                                     {{chilCla.parentName}}
                                 </td>
                                  <td class="text-center">
-                                    
+                                    {{chilCla.childrenAge}}
                                 </td>
                                  <td class="text-center">
-                                    
+                                    {{chilCla.dateOfBirth}}
                                 </td>
                                 <td class="text-center">
-                                    
+                                    {{chilCla.createdDate}}
                                      
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-function">
                                         <button class="btn-edit"></button>
                                         <button class="btn-duplicate"></button>
-                                        <button class="btn-remove" ></button>
+                                        <button class="btn-remove"></button>
                                     </div>
                                 </td>
                             </tr>
@@ -140,13 +133,17 @@
     </div>
     <DetailChildren
     @btCreate="btCreate"
-    :showDetail="showDetail" />
+    :showDetail="showDetail" 
+    :classChildren="classChildren"
+    @loadGroupData="loadGroupData"
+    :ruleForm="chilClass"
+    @btClose="btClose"/>
         <Remove @btRemove="btRemove" :showremove="showremove"/>
   </div>
 </template>
 
 <script>
-
+import axios from "axios";
 import DetailChildren from "../childrent/detail-childrent.vue"
 import Remove from "../../base/baseRemove.vue"
 export default {
@@ -158,7 +155,9 @@ export default {
     data(){
         return{
             showDetail:true,
-            showremove:true
+            showremove:true,
+            chilClass:[],
+            classChildren:[]
         }
     },
     methods:{
@@ -171,11 +170,24 @@ export default {
         },
         btClose(value){
             this.showDetail=value
-        }
-       
+        },
+       async loadGroupData(){
+            await axios.get("https://localhost:44396/api/Children").then((res)=>{
+            this.chilClass=res.data;
+        });
+       },
+        async loadClassData(){
+            await axios.get("https://localhost:44396/api/ClassChildren").then((res)=>{
+            this.classChildren=res.data;
+        });
 
         
     }
+},
+created(){
+    this.loadGroupData();
+    this.loadClassData();
+}
 }
 </script>
 

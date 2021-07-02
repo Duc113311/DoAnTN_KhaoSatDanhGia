@@ -18,7 +18,7 @@
                     <i class="el-icon-s-data" style="font-size: 25px"></i>
                   </span>
                   <p>
-                    <span class="number">120</span>
+                    <span class="number">{{evalutions.length}}</span>
                     <span class="title">Số phiếu phát hành</span>
                   </p>
                 </div>
@@ -29,7 +29,7 @@
                     <i class="el-icon-s-custom" style="font-size: 25px"></i>
                   </span>
                   <p>
-                    <span class="number">203</span>
+                    <span class="number">{{children.length}}</span>
                     <span class="title">Trẻ nhập học</span>
                   </p>
                 </div>
@@ -40,7 +40,7 @@
                     <i class="el-icon-s-order" style="font-size: 25px"></i>
                   </span>
                   <p>
-                    <span class="number">78</span>
+                    <span class="number">{{questions.length}}</span>
                     <span class="title">Câu hỏi</span>
                   </p>
                 </div>
@@ -66,11 +66,11 @@
              <template>
             <el-table :data="thongkes" height="300" style="width: 100%;margin-top: 5px;" >
               <el-table-column fixed prop="evalutionName" label="Tên phiếu" width="380"> </el-table-column>
-              <el-table-column prop="satisfied1" label="Hài lòng" width="180"> </el-table-column>
-              <el-table-column prop="unsatisfied1" label="Không hài lòng"> </el-table-column>
-              <el-table-column prop="verySatisfied1" label="Rất hài lòng"> </el-table-column>
-              <el-table-column prop="veryUnsatisfied1" label="Rất không hài lòng"> </el-table-column>
-              <el-table-column prop="normal1" label="Bình thường"> </el-table-column>
+              <el-table-column prop="satisfied1" label="Hài lòng (%)" width="180"></el-table-column>
+              <el-table-column prop="unsatisfied1" label="Không hài lòng (%)"></el-table-column>
+              <el-table-column prop="verySatisfied1" label="Rất hài lòng (%)"> </el-table-column>
+              <el-table-column prop="veryUnsatisfied1" label="Rất không hài lòng(%)"> </el-table-column>
+              <el-table-column prop="normal1" label="Bình thường (%)"> </el-table-column>
             </el-table>
           </template>
           </div>
@@ -87,7 +87,10 @@ export default {
   data() {
     return {
       value1: "",
-      thongkes:[]
+      thongkes:[],
+      evalutions:[],
+      children:[],
+      questions:[]
     };
   },
 
@@ -104,12 +107,34 @@ export default {
                  })
                  this.thongkes = res.data;
              })
-        }
+        },
+        // phiếu
+         async loadEvalution(){
+            await axios.get("https://localhost:44396/api/Evalution").then((res) => {
+             this.evalutions = res.data;
+            })
+         },
+         async loadChil(){
+            await axios.get("https://localhost:44396/api/Children").then((res) => {
+             this.children = res.data;
+            })
+         },
+         async loadQuestion(){
+            await axios.get("https://localhost:44396/api/Questions").then((res) => {
+             this.questions = res.data;
+            })
+         }
   },
+
+         /// Trẻ
+        
   created() {
     this.LoadData();
+    this.loadEvalution();
+    this.loadChil();
+    this.loadQuestion();
   },
-};
+}
 </script>
 
 <style lang="css">

@@ -67,7 +67,7 @@
                   <td scope="row">
                     <input type="checkbox" name="" id="" @click="ongetChil(i.childrenID)" />
                   </td>
-                  <td>{{i.nickName}}</td>
+                  <td>{{i.childrenCode}}</td>
                   <td>{{i.childrenName}}</td>
                 </tr>
                 
@@ -145,6 +145,7 @@ export default {
 
     async btSave(){
       const me=this
+        this.$emit("btClose", true);
       me.evalutionSubmit.listChil=me.arrChil.join(',')
       await axios.post("https://localhost:44396/api/EvalutionSubmit/evalutionsubmit", this.evalutionSubmit).then(()=>{
         this.$notify({

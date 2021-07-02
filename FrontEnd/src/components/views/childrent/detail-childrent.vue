@@ -7,7 +7,7 @@
           <label class="title-form-revenue"> <b>Thêm thông tin trẻ</b></label>
 
           <div class="btn-x">
-            <button class="btn-close" @click="btClose()"></button>
+            <button class="btn-close" @click="btCloseDong()"></button>
           </div>
         </div>
         <el-form
@@ -20,58 +20,60 @@
           <div class="content-form-cs">
             <template>
               <!-- Tên  -->
-              <el-form-item label="Họ & tên trẻ" prop="name">
-                <el-input v-model="ruleForm.name"></el-input>
+              <el-form-item label="Họ & tên trẻ" prop="childrenName">
+                <el-input v-model="ruleForm.childrenName"></el-input>
               </el-form-item>
               <!-- Lớp -->
               <div style="display: grid;grid-template-columns: 1fr 1fr;">
-                <el-form-item label="Lớp học" prop="region">
-                <el-select v-model="ruleForm.region" placeholder="Activity zone">
-                  <el-option label="Zone one" value="shanghai"></el-option>
-                  <el-option label="Zone two" value="beijing"></el-option>
-                </el-select>
+                <el-form-item label="Lớp học" prop="idClassChildren">
+                <el-select
+                      style="width: 220px"
+                      v-model="ruleForm.idClassChildren"
+                      placeholder="Chọn lớp"
+                    >
+                      <el-option
+                        v-for="questinType in classChildren"
+                        :key="questinType.classID"
+                        :label="questinType.className"
+                        :value="questinType.classID"
+                      >
+                      </el-option>
+                    </el-select>
               </el-form-item>
                <!-- Tuổi -->
-              <el-form-item style="width: 350px;margin-left: 100px;" label="Tuổi" prop="age">
-                <el-input v-model.number="ruleForm.age"></el-input>
+              <el-form-item style="width: 350px;margin-left: 100px;" label="Tuổi">
+                <el-input v-model.number="ruleForm.childrenAge"></el-input>
               </el-form-item>
               </div>
               
               <!-- Biệt danh -->
                <div style="display: grid;grid-template-columns: 1fr 1fr;">
-              <el-form-item label="Biệt danh" prop="desc">
-               <el-input v-model="ruleForm.desc"></el-input>
+              <el-form-item label="Biệt danh" prop="nickName">
+               <el-input v-model="ruleForm.nickName"></el-input>
               </el-form-item>
-              <el-form-item style="width: 350px;margin-left: 100px;" label="Ngày sinh" prop="date1">
+              <el-form-item style="width: 350px;margin-left: 100px;" label="Ngày sinh">
                 <el-date-picker
                   type="date"
                   placeholder="Chọn ngày"
-                  v-model="ruleForm.date1"
+                  v-model="ruleForm.dateOfBirth"
                   style="width: 100%"
                 ></el-date-picker>
               </el-form-item>
                </div>
               <!-- Sở thích -->
               <el-form-item label="Sở thích" prop="desc">
-                <el-input type="textarea" v-model="ruleForm.desc"></el-input>
+                <el-input type="textarea" v-model="ruleForm.interest"></el-input>
               </el-form-item>
               <!-- Ngày sinh -->
-              <el-form-item label="Ngày sinh" prop="date1">
-                <el-date-picker
-                  type="date"
-                  placeholder="Chọn ngày"
-                  v-model="ruleForm.date1"
-                  style="width: 100%"
-                ></el-date-picker>
-              </el-form-item>
+         
               <!-- Họ tên bố mẹ -->
-              <el-form-item label="Tên Bố/Mẹ" prop="name">
-                <el-input v-model="ruleForm.name"></el-input>
+              <el-form-item label="Tên Bố/Mẹ" prop="parentName">
+                <el-input v-model="ruleForm.parentName"></el-input>
               </el-form-item>
               <!-- Số diện thoại -->
               <div style="display: grid;grid-template-columns: 1fr 1fr;">
-              <el-form-item label="Số điện thoại" prop="age">
-                <el-input v-model.number="ruleForm.age"></el-input>
+              <el-form-item label="Số điện thoại" prop="phoneNumber">
+                <el-input v-model.number="ruleForm.phoneNumber"></el-input>
               </el-form-item>
               <!-- Email -->
               <el-form-item style="width: 350px;margin-left: 100px;" label="Email" prop="email">
@@ -94,73 +96,55 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "DetailQuestion",
-
-  props: ["showDetail"],
+  
+  props: ["showDetail","ruleForm","classChildren","loadGroupData"],
 
   data() {
     return {
-      ruleForm: {
-        name: "",
-        region: "",
-        date1: "",
-        date2: "",
-        delivery: false,
-        type: [],
-        resource: "",
-        desc: "",
-      },
+     
       rules: {
+        childrenName: [
+          { required: true, message: "Nhập họ tên trẻ", trigger: "blur" }
+        ],
+        idClassChildren: [
+          { required: true, message: "Nhập họ tên trẻ", trigger: "blur" }
+        ],
         name: [
-          { required: true, message: "Please input Activity name", trigger: "blur" },
-          { min: 3, max: 5, message: "Length should be 3 to 5", trigger: "blur" },
+          { required: true, message: "Nhập họ tên trẻ", trigger: "blur" }
         ],
-        region: [
-          { required: true, message: "Please select Activity zone", trigger: "change" },
+        parentName: [
+          { required: true, message: "Nhập họ tên trẻ", trigger: "blur" }
         ],
-        date1: [
-          {
-            type: "date",
-            required: true,
-            message: "Please pick a date",
-            trigger: "change",
-          },
+         phoneNumber: [
+          { required: true, message: "Nhập họ tên trẻ", trigger: "blur" }
         ],
-        date2: [
-          {
-            type: "date",
-            required: true,
-            message: "Please pick a time",
-            trigger: "change",
-          },
-        ],
-        type: [
-          {
-            type: "array",
-            required: true,
-            message: "Please select at least one activity type",
-            trigger: "change",
-          },
-        ],
-        resource: [
-          {
-            required: true,
-            message: "Please select activity resource",
-            trigger: "change",
-          },
-        ],
-        desc: [
-          { required: true, message: "Please input activity form", trigger: "blur" },
-        ],
+       
+        
       },
     };
   },
   methods: {
+
+    btCloseDong(){
+      this.$emit("btClose", true);
+    },
     submitForm(formName) {
+      const me=this
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert("submit!");
+          axios.post("https://localhost:44396/api/Children", me.ruleForm).then(() => {
+              this.$notify({
+                title: "Thành công",
+                message: "Thêm câu hỏi thành công",
+                type: "success",
+              });
+              this.$emit("loadGroupData");
+              this.ruleForm = {};
+              this.$emit("btClose", true);
+            });
         } else {
           console.log("error submit!!");
           return false;
@@ -170,6 +154,7 @@ export default {
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },
+ 
   },
 };
 </script>
